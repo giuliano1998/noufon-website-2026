@@ -1,0 +1,9 @@
+{
+  "name": "noufon-website",
+  "version": "1.0.0",
+  "description": "NOUFON website — sistema de fundas magnéticas para colegios",
+  "private": true,
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  }
+}

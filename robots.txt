@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://noufon.com/sitemap.xml

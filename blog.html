@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PHK2V9FW');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | NOUFON - Artículos sobre celulares en las aulas</title>
+  <meta name="description" content="Lee los artículos del blog de NOUFON sobre legislación, investigación y soluciones para la gestión de celulares en colegios de Argentina y Latinoamérica." />
+  <link rel="canonical" href="https://noufon.com/blog.html" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/svg+xml" href="favicon-wa.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--teal:#2DD4BF;--dark:#0F2D3D;--white:#FFFFFF;--text:#1a1a1a;--gray:#f5f5f5;--gray-mid:#e0e0e0;--font:'Montserrat',sans-serif}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);color:var(--text);background:var(--white);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,0.06);transition:box-shadow 0.3s}
+    nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.08)}
+    .nav-logo{font-size:1.5rem;font-weight:900;letter-spacing:-0.5px;color:var(--teal);text-decoration:none}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:0.85rem;font-weight:600;text-decoration:none;color:var(--text);letter-spacing:0.03em;text-transform:uppercase;transition:color 0.2s}
+    .nav-links a:hover,.nav-active{color:var(--teal)!important}
+    .nav-cta{background:var(--teal);color:var(--white)!important;padding:0.5rem 1.25rem;border-radius:50px;transition:background 0.2s!important}
+    .nav-cta:hover{background:#22b5a3!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s}
+
+    /* BLOG HERO */
+    .blog-hero{background:var(--dark);padding:140px 5% 90px;text-align:center;position:relative;overflow:hidden}
+    .blog-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(45,212,191,0.1) 0%,transparent 70%);pointer-events:none}
+    .blog-hero-inner{position:relative}
+    .blog-hero-label{display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(45,212,191,0.4);padding:0.35rem 1rem;border-radius:50px;margin-bottom:1.5rem}
+    .blog-hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:900;color:var(--white);letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem}
+    .blog-hero p{font-size:1.05rem;color:rgba(255,255,255,0.55);max-width:560px;margin:0 auto;line-height:1.65}
+
+    /* BLOG LISTING */
+    .blog-listing{padding:80px 5% 100px;background:var(--white)}
+    .blog-listing-inner{max-width:1100px;margin:0 auto}
+
+    /* FEATURED POST */
+    .blog-featured{display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-radius:20px;overflow:hidden;border:1px solid var(--gray-mid);margin-bottom:60px;text-decoration:none;color:inherit;transition:box-shadow 0.3s,border-color 0.3s}
+    .blog-featured:hover{box-shadow:0 24px 60px rgba(0,0,0,0.1);border-color:var(--teal)}
+    .blog-featured-img{width:100%;height:100%;min-height:340px;object-fit:cover;display:block}
+    .blog-featured-body{padding:2.5rem 2.75rem;display:flex;flex-direction:column;justify-content:center;background:var(--white)}
+    .blog-post-meta{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+    .blog-post-date{font-size:0.78rem;color:#999;font-weight:500}
+    .blog-post-cat{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal)}
+    .blog-featured-body h2{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;line-height:1.25;letter-spacing:-0.02em;color:var(--text);margin-bottom:0.9rem}
+    .blog-featured-body p{font-size:0.95rem;color:#666;line-height:1.7;margin-bottom:1.5rem}
+    .blog-read-more{font-size:0.82rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.06em}
+    .blog-read-more span{display:inline-block;transition:transform 0.2s}
+    .blog-featured:hover .blog-read-more span{transform:translateX(4px)}
+
+    /* GRID */
+    .blog-grid-label{font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.3);margin-bottom:1.5rem;display:block}
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+    .blog-card{display:block;text-decoration:none;color:inherit;border-radius:20px;overflow:hidden;border:1px solid var(--gray-mid);background:var(--white);transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s}
+    .blog-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.09);border-color:var(--teal)}
+    .blog-card-img{width:100%;height:220px;object-fit:cover;display:block}
+    .blog-card-body{padding:1.6rem}
+    .blog-card-body h3{font-size:1.05rem;font-weight:800;margin-bottom:0.6rem;line-height:1.35;letter-spacing:-0.01em;color:var(--text)}
+    .blog-card-body p{font-size:0.87rem;color:#666;line-height:1.65;margin-bottom:1rem}
+    .blog-card-link{font-size:0.78rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.06em}
+
+    /* FOOTER */
+    footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:60px 5% 40px}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:50px;flex-wrap:wrap}
+    .footer-brand .nav-logo{font-size:1.6rem;display:block;margin-bottom:0.6rem}
+    .footer-tagline{font-size:0.85rem;color:rgba(255,255,255,0.35)}
+    .footer-links{display:flex;gap:60px;flex-wrap:wrap}
+    .footer-col h4{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1rem}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+    .footer-col a{text-decoration:none;color:rgba(255,255,255,0.55);font-size:0.9rem;font-weight:500;transition:color 0.2s}
+    .footer-col a:hover{color:var(--teal)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .footer-bottom p{font-size:0.8rem}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.1s}
+    .reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){.blog-featured{grid-template-columns:1fr}.blog-featured-img{min-height:260px}.blog-featured-body{padding:2rem}}
+    @media(max-width:768px){
+      .nav-links{display:none;position:fixed;top:68px;left:0;right:0;background:var(--white);flex-direction:column;gap:0;padding:1rem 0;border-bottom:1px solid var(--gray-mid);box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+      .nav-links.open{display:flex}
+      .nav-links li a{display:block;padding:0.85rem 5%}
+      .nav-cta{margin:0.5rem 5%;text-align:center;border-radius:50px;padding:0.75rem}
+      .hamburger{display:flex}
+    }
+    /* ── WA FLOAT ── */
+    .wa-float{position:fixed;bottom:28px;right:28px;z-index:200;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.5);transition:transform 0.25s,box-shadow 0.25s;color:#fff;text-decoration:none}.wa-float:hover{transform:scale(1.12);box-shadow:0 8px 32px rgba(37,211,102,0.7)}.wa-float svg{width:30px;height:30px}
+    /* ── POPUP ── */
+    .popup-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.3s}.popup-overlay.active{opacity:1;pointer-events:all}.popup-box{background:#fff;border-radius:24px;padding:2.5rem;max-width:460px;width:100%;position:relative;transform:translateY(20px);transition:transform 0.35s cubic-bezier(.175,.885,.32,1.275)}.popup-overlay.active .popup-box{transform:translateY(0)}.popup-close{position:absolute;top:1rem;right:1.1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#aaa;line-height:1;padding:0.2rem 0.5rem}.popup-close:hover{color:#333}.popup-badge{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(45,212,191,0.35);padding:0.3rem 0.85rem;border-radius:50px;margin-bottom:1rem}.popup-title{font-size:1.45rem;font-weight:900;color:var(--dark);letter-spacing:-0.02em;margin-bottom:0.5rem}.popup-sub{font-size:0.88rem;color:#666;margin-bottom:1.5rem;line-height:1.6}.popup-form input{display:block;width:100%;padding:0.8rem 1rem;margin-bottom:0.75rem;border:1.5px solid #e0e0e0;border-radius:10px;font-family:var(--font);font-size:0.92rem;outline:none;transition:border-color 0.2s;color:#1a1a1a}.popup-form input:focus{border-color:var(--teal)}.popup-submit{width:100%;padding:0.9rem;background:var(--teal);color:var(--dark);font-family:var(--font);font-size:0.88rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;border:none;border-radius:50px;cursor:pointer;transition:background 0.2s,transform 0.2s;margin-bottom:1rem}.popup-submit:hover{background:#1a9083;transform:translateY(-1px)}.popup-divider{text-align:center;font-size:0.78rem;color:#aaa;margin:0.25rem 0 0.85rem;display:flex;align-items:center;gap:0.75rem}.popup-divider::before,.popup-divider::after{content:'';flex:1;height:1px;background:#e0e0e0}.popup-wa-btn{display:flex;align-items:center;justify-content:center;gap:0.6rem;width:100%;padding:0.85rem;background:#25D366;color:#fff;font-family:var(--font);font-size:0.88rem;font-weight:700;border-radius:50px;text-decoration:none;transition:background 0.2s,transform 0.2s}.popup-wa-btn:hover{background:#1da851;transform:translateY(-1px)}.popup-wa-btn svg{width:20px;height:20px;flex-shrink:0}.popup-success-msg{display:none;text-align:center;padding:1.5rem 1rem;background:rgba(45,212,191,0.08);border-radius:16px;font-weight:600;color:var(--dark);margin-top:0.5rem}
+    @media(max-width:480px){.popup-box{padding:1.75rem 1.25rem}.popup-title{font-size:1.25rem}.wa-float{bottom:20px;right:20px;width:52px;height:52px}.wa-float svg{width:26px;height:26px}}
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHK2V9FW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">NOUFON</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#casos">Beneficios</a></li>
+      <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+      <li><a href="blog.html" class="nav-active">Blog</a></li>
+      <li><a href="contacto.html" class="nav-cta" id="navContacto">Contacto</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="blog-hero">
+    <div class="blog-hero-inner">
+      <span class="blog-hero-label">Blog NOUFON</span>
+      <h1>Artículos y Novedades</h1>
+      <p>Investigaciones, legislación y tendencias sobre el uso de celulares en las aulas de Argentina y Latinoamérica.</p>
+    </div>
+  </section>
+
+  <!-- LISTING -->
+  <section class="blog-listing">
+    <div class="blog-listing-inner">
+
+      <!-- FEATURED: Blog 1 -->
+      <a href="ley-15534-celulares-escuela.html" class="blog-featured reveal">
+        <img class="blog-featured-img" src="https://res.cloudinary.com/dubsnpevb/image/upload/v1773091714/WhatsApp_Image_2026-03-09_at_6.09.35_PM_smbkuz.jpg" alt="Ley 15.534 celulares en escuelas Argentina NOUFON" />
+        <div class="blog-featured-body">
+          <div class="blog-post-meta">
+            <span class="blog-post-date">31 mar 2026</span>
+            <span class="blog-post-cat">Legislación</span>
+          </div>
+          <h2>Cómo la Ley 15.534 Transformará las Aulas Argentinas y Cómo Noufon Ayuda a los Colegios a Cumplirla</h2>
+          <p>La ley que prohíbe celulares en escuelas ya es una realidad. Descubrí cómo implementarla sin conflictos desde el primer día.</p>
+          <span class="blog-read-more">Leer artículo <span>→</span></span>
+        </div>
+      </a>
+
+      <!-- GRID: Blogs 2 y 3 -->
+      <span class="blog-grid-label">Más artículos</span>
+      <div class="blog-grid">
+        <a href="fundas-para-colegios.html" class="blog-card reveal reveal-delay-1">
+          <img class="blog-card-img" src="bilinkis-foto.jpg" alt="Santiago Bilinkis pantallas niños inteligencia" />
+          <div class="blog-card-body">
+            <div class="blog-post-meta">
+              <span class="blog-post-date">31 mar 2026</span>
+              <span class="blog-post-cat">Investigación</span>
+            </div>
+            <h3>Santiago Bilinkis Advierte sobre el Daño de las Pantallas en Niños: Cómo Noufon Revierte la Pérdida de Inteligencia</h3>
+            <p>Por primera vez, los niños rinden peor que sus padres. Las fundas NOUFON son la respuesta práctica.</p>
+            <span class="blog-card-link">Leer artículo →</span>
+          </div>
+        </a>
+        <a href="como-implementar-politica-de-celulares-en-escuela.html" class="blog-card reveal reveal-delay-2">
+          <img class="blog-card-img" src="https://res.cloudinary.com/dubsnpevb/image/upload/v1773091734/output-assetsV2_KRSnQLbBS0R2pc0llY4W_asset_jfewoy.png" alt="UNESCO docentes celulares clase resultados" />
+          <div class="blog-card-body">
+            <div class="blog-post-meta">
+              <span class="blog-post-date">31 mar 2026</span>
+              <span class="blog-post-cat">Estudios</span>
+            </div>
+            <h3>UNESCO y Docentes Confirman: Menos Celulares en Clase = Mejores Resultados. Noufon es la Solución Práctica</h3>
+            <p>Guía paso a paso para implementar una política de celulares efectiva en tu institución.</p>
+            <span class="blog-card-link">Leer artículo →</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">NOUFON</a>
+          <p class="footer-tagline">Conectando con el ahora.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Navegación</h4>
+            <ul>
+              <li><a href="index.html#que-es">Qué es NOUFON</a></li>
+              <li><a href="index.html#casos">Beneficios</a></li>
+              <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contacto</h4>
+            <ul>
+              <li><a href="contacto.html">Formulario de contacto</a></li>
+              <li><a href="mailto:info@noufon.com">info@noufon.com</a></li>
+              <li><a href="https://www.instagram.com/_noufon/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a href="https://www.linkedin.com/company/noufon" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="politica-de-privacidad.html">Política de privacidad</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 NOUFON. Todos los derechos reservados.</p>
+        <p>Hecho con presencia. 🤍</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── WA FLOAT ── -->
+  <a href="https://wa.me/+5491164518851" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <!-- ── POPUP ── -->
+  <div id="contact-popup" class="popup-overlay" aria-hidden="true">
+    <div class="popup-box">
+      <button class="popup-close" id="popupClose" aria-label="Cerrar">✕</button>
+      <span class="popup-badge">Sin compromiso</span>
+      <h2 class="popup-title">Hablemos sobre tu colegio</h2>
+      <p class="popup-sub">Dejanos tus datos y te contactamos en menos de 24 hs hábiles.</p>
+      <form class="popup-form" id="popup-form">
+        <input type="text" name="popup_nombre" placeholder="Nombre y apellido *" required autocomplete="name" />
+        <input type="email" name="popup_email" placeholder="Email institucional *" required autocomplete="email" />
+        <input type="text" name="popup_colegio" placeholder="Nombre del colegio *" required />
+        <button type="submit" class="popup-submit">Enviar consulta</button>
+      </form>
+      <div class="popup-divider">o contactanos por</div>
+      <a href="https://wa.me/+5491164518851" class="popup-wa-btn" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+      <p class="popup-success-msg" id="popup-success">¡Gracias! Te respondemos pronto 🤍</p>
+    </div>
+  </div>
+  <script>
+    const navbar=document.getElementById('navbar');
+    window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>10));
+    const hamburger=document.getElementById('hamburger');
+    const navLinks=document.getElementById('navLinks');
+    hamburger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>navLinks.classList.remove('open')));
+    const reveals=document.querySelectorAll('.reveal');
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}}),{threshold:0.08});
+    reveals.forEach(el=>observer.observe(el));
+    // ── Popup
+    const popup=document.getElementById('contact-popup');
+    function openPopup(){popup.classList.add('active');popup.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+    function closePopup(){popup.classList.remove('active');popup.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+    document.getElementById('popupClose').addEventListener('click',closePopup);
+    popup.addEventListener('click',e=>{if(e.target===popup)closePopup();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
+    const navContacto=document.getElementById('navContacto');
+    if(navContacto)navContacto.addEventListener('click',e=>{e.preventDefault();openPopup();});
+    const popupForm=document.getElementById('popup-form');
+    if(popupForm){popupForm.addEventListener('submit',async e=>{e.preventDefault();const fd=new FormData(popupForm);const payload={nombre:fd.get('popup_nombre')||'',email:fd.get('popup_email')||'',colegio:fd.get('popup_colegio')||''};try{await fetch('/.netlify/functions/send-contact-email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'popup_form_submit',form_nombre:payload.nombre,form_colegio:payload.colegio});popupForm.style.display='none';document.querySelector('#contact-popup .popup-divider').style.display='none';document.querySelector('#contact-popup .popup-wa-btn').style.display='none';document.getElementById('popup-success').style.display='block';});}
+    // Auto-popup 2 min tras primer scroll
+    if(!sessionStorage.getItem('popupFired')){window.addEventListener('scroll',function _sp(){window.removeEventListener('scroll',_sp);setTimeout(()=>{if(!popup.classList.contains('active')){openPopup();sessionStorage.setItem('popupFired','1');}},120000);},{passive:true,once:true});}
+  </script>
+</body>
+</html>
