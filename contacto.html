@@ -119,6 +119,8 @@
     .btn-full{width:100%;text-align:center}
     .form-success{display:none;text-align:center;padding:2rem;background:rgba(45,212,191,0.08);border-radius:16px;border:1px solid rgba(45,212,191,0.3)}
     .form-success p{font-size:1rem;font-weight:600;color:var(--dark)}
+    .field-error{display:none;font-size:0.75rem;color:#e53e3e;margin-top:0.25rem;font-weight:600}
+    .form-group input.invalid,.form-group select.invalid,.form-group textarea.invalid{border-color:#e53e3e!important;box-shadow:0 0 0 3px rgba(229,62,62,0.12)!important}
 
     /* Brevo embed override */
     #brevo-form-container .sib-form{padding:0!important;background:transparent!important}
@@ -248,33 +250,39 @@
           <div class="form-group">
             <label for="nombre">Nombre *</label>
             <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required autocomplete="given-name" />
+            <span class="field-error" id="err-nombre">Ingresá al menos 4 letras.</span>
           </div>
           <div class="form-group">
             <label for="apellido">Apellido *</label>
             <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required autocomplete="family-name" />
+            <span class="field-error" id="err-apellido">Ingresá al menos 4 letras.</span>
           </div>
         </div>
         <div class="form-group">
           <label for="email">Email institucional *</label>
           <input type="email" id="email" name="email" placeholder="directivo@colegio.edu.ar" required autocomplete="email" />
+          <span class="field-error" id="err-email">Ingresá un email válido.</span>
         </div>
         <div class="form-group">
           <label for="colegio">Nombre del colegio *</label>
           <input type="text" id="colegio" name="colegio" placeholder="Instituto San Martín" required />
+          <span class="field-error" id="err-colegio">Ingresá al menos 4 letras.</span>
         </div>
         <div class="form-group">
-          <label for="cargo">Tu cargo</label>
-          <select id="cargo" name="cargo">
+          <label for="cargo">Tu cargo *</label>
+          <select id="cargo" name="cargo" required>
             <option value="">Seleccioná tu rol</option>
             <option value="director">Director/a</option>
             <option value="coordinador">Coordinador/a académico</option>
             <option value="rector">Rector/a</option>
             <option value="otro">Otro</option>
           </select>
+          <span class="field-error" id="err-cargo">Seleccioná tu cargo.</span>
         </div>
         <div class="form-group">
-          <label for="mensaje">¿Qué querés saber?</label>
+          <label for="mensaje">¿Qué querés saber? *</label>
           <textarea id="mensaje" name="mensaje" placeholder="Contanos sobre tu colegio o hacé tu consulta..."></textarea>
+          <span class="field-error" id="err-mensaje">Escribí al menos 4 palabras.</span>
         </div>
         <p class="form-consent">
           Al enviar este formulario aceptás nuestra
@@ -354,24 +362,65 @@
     }, { threshold: 0.1 });
     revealEls.forEach(el => io.observe(el));
 
-    // Formulario nativo: envío a Netlify Function + GTM
+    // ── Validaciones y envío del formulario principal ──
     const form = document.getElementById('contact-form');
     const success = document.getElementById('form-success');
+
+    function letras(str) { return str.replace(/\s/g, '').length; }
+    function emailValido(str) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str); }
+    function palabras(str) { return str.trim().split(/\s+/).filter(Boolean).length; }
+
+    function setError(id, visible) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.style.display = visible ? 'block' : 'none';
+      const input = el.previousElementSibling;
+      if (input) input.classList.toggle('invalid', visible);
+    }
+
+    function validarForm(fd) {
+      const nombre   = (fd.get('nombre')   || '').trim();
+      const apellido = (fd.get('apellido') || '').trim();
+      const email    = (fd.get('email')    || '').trim();
+      const colegio  = (fd.get('colegio')  || '').trim();
+      const cargo    = (fd.get('cargo')    || '').trim();
+      const mensaje  = (fd.get('mensaje')  || '').trim();
+
+      const errores = {
+        'err-nombre':   letras(nombre)   < 4,
+        'err-apellido': letras(apellido) < 4,
+        'err-email':    !emailValido(email),
+        'err-colegio':  letras(colegio)  < 4,
+        'err-cargo':    cargo === '',
+        'err-mensaje':  palabras(mensaje) < 4
+      };
+
+      let hayError = false;
+      for (const [id, invalido] of Object.entries(errores)) {
+        setError(id, invalido);
+        if (invalido) hayError = true;
+      }
+      return !hayError;
+    }
+
     if (form) {
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
         const fd = new FormData(form);
+
+        if (!validarForm(fd)) return; // detiene si hay errores
+
         const submitBtn = form.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Enviando...';
 
         const payload = {
-          nombre:   fd.get('nombre')   || '',
-          apellido: fd.get('apellido') || '',
-          email:    fd.get('email')    || '',
-          colegio:  fd.get('colegio')  || '',
-          cargo:    fd.get('cargo')    || '',
-          mensaje:  fd.get('mensaje')  || ''
+          nombre:   (fd.get('nombre')   || '').trim(),
+          apellido: (fd.get('apellido') || '').trim(),
+          email:    (fd.get('email')    || '').trim(),
+          colegio:  (fd.get('colegio')  || '').trim(),
+          cargo:    (fd.get('cargo')    || '').trim(),
+          mensaje:  (fd.get('mensaje')  || '').trim()
         };
 
         try {
@@ -380,9 +429,8 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-        } catch (_) { /* continúa igual si falla red */ }
+        } catch (_) { /* continúa si falla red */ }
 
-        // GTM tracking
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'contact_form_submit',
@@ -395,19 +443,8 @@
         success.style.display = 'block';
       });
     }
-    // ── Popup
-    const popup=document.getElementById('contact-popup');
-    function openPopup(){popup.classList.add('active');popup.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
-    function closePopup(){popup.classList.remove('active');popup.setAttribute('aria-hidden','true');document.body.style.overflow='';}
-    document.getElementById('popupClose').addEventListener('click',closePopup);
-    popup.addEventListener('click',e=>{if(e.target===popup)closePopup();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
-    const navContacto=document.getElementById('navContacto');
-    if(navContacto)navContacto.addEventListener('click',e=>{e.preventDefault();openPopup();});
-    const popupForm=document.getElementById('popup-form');
-    if(popupForm){popupForm.addEventListener('submit',async e=>{e.preventDefault();const fd=new FormData(popupForm);const payload={nombre:fd.get('popup_nombre')||'',email:fd.get('popup_email')||'',colegio:fd.get('popup_colegio')||''};try{await fetch('/.netlify/functions/send-contact-email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'popup_form_submit',form_nombre:payload.nombre,form_colegio:payload.colegio});popupForm.style.display='none';document.querySelector('#contact-popup .popup-divider').style.display='none';document.querySelector('#contact-popup .popup-wa-btn').style.display='none';document.getElementById('popup-success').style.display='block';});}
-    if(!sessionStorage.getItem('popupFired')){window.addEventListener('scroll',function _sp(){window.removeEventListener('scroll',_sp);setTimeout(()=>{if(!popup.classList.contains('active')){openPopup();sessionStorage.setItem('popupFired','1');}},120000);},{passive:true,once:true});}
   </script>
+  <script src="popup-form.js" defer></script>
 
   <!-- ── WA FLOAT ── -->
   <a href="https://wa.me/+5491164518851" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>

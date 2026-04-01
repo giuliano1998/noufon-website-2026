@@ -257,19 +257,7 @@
     const reveals=document.querySelectorAll('.reveal');
     const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}}),{threshold:0.08});
     reveals.forEach(el=>observer.observe(el));
-    // ── Popup
-    const popup=document.getElementById('contact-popup');
-    function openPopup(){popup.classList.add('active');popup.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
-    function closePopup(){popup.classList.remove('active');popup.setAttribute('aria-hidden','true');document.body.style.overflow='';}
-    document.getElementById('popupClose').addEventListener('click',closePopup);
-    popup.addEventListener('click',e=>{if(e.target===popup)closePopup();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
-    const navContacto=document.getElementById('navContacto');
-    if(navContacto)navContacto.addEventListener('click',e=>{e.preventDefault();openPopup();});
-    const popupForm=document.getElementById('popup-form');
-    if(popupForm){popupForm.addEventListener('submit',async e=>{e.preventDefault();const fd=new FormData(popupForm);const payload={nombre:fd.get('popup_nombre')||'',email:fd.get('popup_email')||'',colegio:fd.get('popup_colegio')||''};try{await fetch('/.netlify/functions/send-contact-email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(_){}window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'popup_form_submit',form_nombre:payload.nombre,form_colegio:payload.colegio});popupForm.style.display='none';document.querySelector('#contact-popup .popup-divider').style.display='none';document.querySelector('#contact-popup .popup-wa-btn').style.display='none';document.getElementById('popup-success').style.display='block';});}
-    // Auto-popup 2 min tras primer scroll
-    if(!sessionStorage.getItem('popupFired')){window.addEventListener('scroll',function _sp(){window.removeEventListener('scroll',_sp);setTimeout(()=>{if(!popup.classList.contains('active')){openPopup();sessionStorage.setItem('popupFired','1');}},120000);},{passive:true,once:true});}
   </script>
+  <script src="popup-form.js" defer></script>
 </body>
 </html>
