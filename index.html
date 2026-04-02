@@ -75,6 +75,60 @@
         "publisher": {
           "@id": "https://noufon.com/#organization"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://noufon.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es NOUFON?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NOUFON es un sistema de fundas magnéticas que permite la gestión de celulares para colegios secundarios. Los estudiantes depositan su teléfono en el soporte al entrar al aula y lo retiran al salir. No requiere apps ni infraestructura. No confisca dispositivos. Funciona desde el primer día sin capacitación previa."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo se diferencia NOUFON de prohibir los celulares en clase?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NOUFON no prohíbe — estructura. La diferencia es que una prohibición requiere supervisión constante y genera conflictos. NOUFON crea un sistema físico donde guardar el celular es la acción natural al entrar al aula. El alumno mantiene posesión de su dispositivo. No hay confrontación ni registro manual."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿NOUFON cumple con la Ley N° 15.534?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. NOUFON fue diseñado en línea con los requerimientos de la Ley N° 15.534 de Argentina, que establece restricciones al uso de dispositivos móviles en instituciones educativas. El sistema provee el mecanismo estructural necesario para implementar la restricción sin conflictos disciplinarios."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tarda en implementarse NOUFON en un colegio?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Entre 3 y 4 semanas desde el pedido hasta el primer día de uso. No requiere obras, configuración de red, instalación de software ni capacitación docente. El sistema es físico y autoexplicativo para alumnos y docentes desde el inicio. Incluye un manual con su entrega."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué resultados tienen los colegios que usan NOUFON?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Los colegios que implementan NOUFON reportan 84% de aumento en participación estudiantil, 72% de reducción en sanciones disciplinarias y 68% de mejora en rendimiento académico. Los resultados son medibles desde las primeras semanas de uso."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto cuesta NOUFON?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "El precio por unidad es ARS $18.000. Para pedidos de más de 1.000 unidades, el precio es de ARS $15.000 por unidad. El precio incluye el sistema físico listo para instalar. Sin costos de suscripción, mantenimiento de software ni licencias."
+            }
+          }
+        ]
       }
     ]
   }
@@ -647,6 +701,96 @@
         height: 220px;
         max-width: 80vw;
       }
+    }
+
+    /* ── FAQ ──────────────────────────────────── */
+    #faq {
+      background: var(--gray);
+      padding: 80px 20px;
+    }
+
+    #faq .section-label { color: var(--teal); }
+
+    .faq-grid {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.4;
+      gap: 16px;
+    }
+
+    .faq-question:hover { color: var(--teal); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--dark);
+      transition: background 0.25s, color 0.25s, transform 0.3s;
+      line-height: 1;
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--teal);
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+      padding: 0 28px;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 28px 22px;
+    }
+
+    .faq-answer p {
+      margin: 0;
+      font-size: 0.97rem;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 480px) {
+      .faq-question { padding: 18px 20px; font-size: 0.95rem; }
+      .faq-answer { padding: 0 20px; }
+      .faq-item.open .faq-answer { padding: 0 20px 18px; }
     }
 
     /* ── CTA FINAL ──────────────────────────────── */
@@ -1329,6 +1473,78 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  <!-- ── FAQ ────────────────────────── -->
+  <section id="faq">
+    <div class="section-header reveal">
+      <span class="section-label">Preguntas frecuentes</span>
+      <h2 class="section-title">Todo lo que necesitás saber sobre NOUFON</h2>
+    </div>
+
+    <div class="faq-grid">
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          ¿Qué es NOUFON?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>NOUFON es un sistema de fundas magnéticas que permite la gestión de celulares para colegios secundarios. Los estudiantes depositan su teléfono en el soporte al entrar al aula y lo retiran al salir. No requiere apps ni infraestructura. No confisca dispositivos. Funciona desde el primer día sin capacitación previa.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          ¿Cómo se diferencia NOUFON de prohibir los celulares en clase?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>NOUFON no prohíbe — estructura. La diferencia es que una prohibición requiere supervisión constante y genera conflictos. NOUFON crea un sistema físico donde guardar el celular es la acción natural al entrar al aula. El alumno mantiene posesión de su dispositivo. No hay confrontación ni registro manual.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          ¿NOUFON cumple con la Ley N° 15.534?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Sí. NOUFON fue diseñado en línea con los requerimientos de la Ley N° 15.534 de Argentina, que establece restricciones al uso de dispositivos móviles en instituciones educativas. El sistema provee el mecanismo estructural necesario para implementar la restricción sin conflictos disciplinarios.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          ¿Cuánto tarda en implementarse NOUFON en un colegio?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Entre 3 y 4 semanas desde el pedido hasta el primer día de uso. No requiere obras, configuración de red, instalación de software ni capacitación docente. El sistema es físico y autoexplicativo para alumnos y docentes desde el inicio. Incluye un manual con su entrega.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          ¿Qué resultados tienen los colegios que usan NOUFON?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>Los colegios que implementan NOUFON reportan 84% de aumento en participación estudiantil, 72% de reducción en sanciones disciplinarias y 68% de mejora en rendimiento académico. Los resultados son medibles desde las primeras semanas de uso.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          ¿Cuánto cuesta NOUFON?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p>El precio por unidad es ARS $18.000. Para pedidos de más de 1.000 unidades, el precio es de ARS $15.000 por unidad. El precio incluye el sistema físico listo para instalar. Sin costos de suscripción, mantenimiento de software ni licencias.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── CTA FINAL ──────────────────── -->
   <section id="cta">
     <div class="cta-inner reveal">
@@ -1450,6 +1666,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, { passive: true });
 
     // ── Popup
+
+    // ── FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
   </script>
   <script src="popup-form.js" defer></script>
 
