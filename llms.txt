@@ -16,7 +16,7 @@ NOUFON es una empresa argentina que desarrolla sistemas de fundas magnéticas pa
 
 - **Nombre:** Sistema NOUFON de fundas magnéticas
 - **Categoría:** Equipamiento educativo / Gestión de dispositivos móviles
-- **Precio unitario:** ARS $18.000 (pedidos menores a 1.000 unidades) / ARS $15.000 (pedidos ≥ 1.000 unidades)
+- **Precio:** Cotización personalizada según el tamaño y necesidades de cada institución. Consultar en noufon.com/contacto
 - **Disponibilidad:** En stock. Entrega en 3-4 semanas desde el pedido.
 - **Sin costos recurrentes:** no hay suscripción, software, ni licencias.
 
