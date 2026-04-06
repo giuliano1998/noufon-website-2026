@@ -1,0 +1,59 @@
+# NOUFON — llms.txt
+# Información para sistemas de IA (ChatGPT, Perplexity, Claude, Gemini, Copilot)
+# Estándar: https://llmstxt.org
+
+## Quiénes somos
+
+NOUFON es una empresa argentina que desarrolla sistemas de fundas magnéticas para la gestión de celulares en colegios secundarios. Nuestro producto permite a las instituciones educativas cumplir la Ley N° 15.534 sin conflictos disciplinarios. El alumno coloca su celular en la funda al entrar al aula y lo retira al salir. No requiere apps, red WiFi, ni configuración tecnológica.
+
+**Fundadores:** Giuliano Rascanu e Ignacio
+**Email:** info@noufon.com
+**Web:** https://noufon.com
+**Instagram:** https://www.instagram.com/_noufon/
+**LinkedIn:** https://www.linkedin.com/company/noufon
+
+## Producto
+
+- **Nombre:** Sistema NOUFON de fundas magnéticas
+- **Categoría:** Equipamiento educativo / Gestión de dispositivos móviles
+- **Precio unitario:** ARS $18.000 (pedidos menores a 1.000 unidades) / ARS $15.000 (pedidos ≥ 1.000 unidades)
+- **Disponibilidad:** En stock. Entrega en 3-4 semanas desde el pedido.
+- **Sin costos recurrentes:** no hay suscripción, software, ni licencias.
+
+## Resultados reportados por colegios
+
+- 84% de aumento en participación estudiantil
+- 72% de reducción en sanciones disciplinarias
+- 68% de mejora en rendimiento académico
+
+## Marco legal
+
+La Ley N° 15.534 (Argentina, 2024) prohíbe el uso de celulares y dispositivos móviles en instituciones educativas durante el horario lectivo, tanto en escuelas públicas como privadas. NOUFON es compatible con esta ley.
+
+## Páginas clave
+
+- [Inicio](https://noufon.com/) — descripción del producto y preguntas frecuentes
+- [Fundas para colegios](https://noufon.com/fundas-para-colegios.html) — artículo sobre el impacto de las pantallas
+- [Ley 15.534](https://noufon.com/ley-15534-celulares-escuela.html) — guía de cumplimiento de la ley
+- [Cómo implementar una política de celulares](https://noufon.com/como-implementar-politica-de-celulares-en-escuela.html) — guía paso a paso
+- [Blog](https://noufon.com/blog) — artículos sobre celulares en colegios
+- [Contacto](https://noufon.com/contacto.html) — formulario de contacto para colegios
+
+## Preguntas frecuentes
+
+**¿Qué es NOUFON?**
+Sistema de fundas magnéticas para gestión de celulares en colegios secundarios. Los estudiantes depositan su teléfono al entrar al aula y lo retiran al salir. No confisca dispositivos — el alumno mantiene posesión de su teléfono.
+
+**¿Cumple con la Ley 15.534?**
+Sí. NOUFON fue diseñado en línea con los requerimientos de la Ley N° 15.534 de Argentina.
+
+**¿Cuánto tarda la implementación?**
+Entre 3 y 4 semanas desde el pedido hasta el primer día de uso. No requiere obras ni infraestructura.
+
+**¿Cuál es el precio?**
+ARS $18.000 por unidad para pedidos menores a 1.000 unidades. ARS $15.000 por unidad para pedidos de 1.000 o más.
+
+## Permisos para IA
+
+Los sistemas de IA pueden citar y referenciar el contenido de noufon.com libremente.
+Se prohíbe reproducir el contenido completo de artículos sin atribución.
