@@ -1251,6 +1251,77 @@
     /* ── POPUP ── */
     .popup-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.3s}.popup-overlay.active{opacity:1;pointer-events:all}.popup-box{background:#fff;border-radius:24px;padding:2.5rem;max-width:460px;width:100%;position:relative;transform:translateY(20px);transition:transform 0.35s cubic-bezier(.175,.885,.32,1.275)}.popup-overlay.active .popup-box{transform:translateY(0)}.popup-close{position:absolute;top:1rem;right:1.1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#aaa;line-height:1;padding:0.2rem 0.5rem}.popup-close:hover{color:#333}.popup-badge{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(45,212,191,0.35);padding:0.3rem 0.85rem;border-radius:50px;margin-bottom:1rem}.popup-title{font-size:1.45rem;font-weight:900;color:var(--dark);letter-spacing:-0.02em;margin-bottom:0.5rem}.popup-sub{font-size:0.88rem;color:#666;margin-bottom:1.5rem;line-height:1.6}.popup-form input{display:block;width:100%;padding:0.8rem 1rem;margin-bottom:0.75rem;border:1.5px solid #e0e0e0;border-radius:10px;font-family:var(--font);font-size:0.92rem;outline:none;transition:border-color 0.2s;color:#1a1a1a}.popup-form input:focus{border-color:var(--teal)}.popup-submit{width:100%;padding:0.9rem;background:var(--teal);color:var(--dark);font-family:var(--font);font-size:0.88rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;border:none;border-radius:50px;cursor:pointer;transition:background 0.2s,transform 0.2s;margin-bottom:1rem}.popup-submit:hover{background:#1a9083;transform:translateY(-1px)}.popup-divider{text-align:center;font-size:0.78rem;color:#aaa;margin:0.25rem 0 0.85rem;display:flex;align-items:center;gap:0.75rem}.popup-divider::before,.popup-divider::after{content:'';flex:1;height:1px;background:#e0e0e0}.popup-wa-btn{display:flex;align-items:center;justify-content:center;gap:0.6rem;width:100%;padding:0.85rem;background:#25D366;color:#fff;font-family:var(--font);font-size:0.88rem;font-weight:700;border-radius:50px;text-decoration:none;transition:background 0.2s,transform 0.2s}.popup-wa-btn:hover{background:#1da851;transform:translateY(-1px)}.popup-wa-btn svg{width:20px;height:20px;flex-shrink:0}.popup-success-msg{display:none;text-align:center;padding:1.5rem 1rem;background:rgba(45,212,191,0.08);border-radius:16px;font-weight:600;color:var(--dark);margin-top:0.5rem}
     @media(max-width:480px){.popup-box{padding:1.75rem 1.25rem}.popup-title{font-size:1.25rem}.wa-float{bottom:20px;right:20px;width:52px;height:52px}.wa-float svg{width:26px;height:26px}}
+
+    /* ── VIDEO SECTION ───────────────────────── */
+    #video-section {
+      width: 100%;
+      padding: 60px 5%;
+      background: var(--white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .video-section-header {
+      text-align: center;
+    }
+
+    .video-section-header .section-label {
+      color: var(--teal);
+    }
+
+    .video-section-header .section-title {
+      margin-bottom: 0;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-cta {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      #video-section { padding: 40px 5%; }
+      .video-container { gap: 20px; }
+      .video-wrapper { border-radius: 8px; }
+    }
+
+    @media (max-width: 480px) {
+      #video-section { padding: 30px 4%; }
+      .video-container { gap: 16px; }
+      .video-wrapper { border-radius: 6px; }
+      .video-cta { width: 100%; }
+      .video-cta .btn { width: 100%; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -1293,6 +1364,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="hero-scroll">
       <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── VIDEO SECTION ────────────── -->
+  <section id="video-section">
+    <div class="video-container">
+      <div class="video-section-header">
+        <span class="section-label reveal">Conocé cómo funciona</span>
+        <h2 class="section-title reveal reveal-delay-1">NOUFON en acción</h2>
+      </div>
+      <div class="video-wrapper reveal reveal-delay-2" id="videoWrapper">
+        <iframe
+          id="videoIframe"
+          data-src="https://www.youtube.com/embed/BU4OpfYtV3k"
+          src=""
+          title="NOUFON - Sistema de Fundas para Colegios"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="video-cta reveal reveal-delay-3">
+        <a href="/contacto" class="btn btn-primary">Quiero NOUFON</a>
+      </div>
     </div>
   </section>
 
@@ -1614,6 +1708,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </footer>
 
   <script>
+    // ── Video autoplay on scroll
+    const videoIframe = document.getElementById('videoIframe');
+    const videoWrapper = document.getElementById('videoWrapper');
+    const videoSrc = videoIframe.dataset.src;
+
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          videoIframe.src = videoSrc + '?autoplay=1&mute=1';
+        } else {
+          videoIframe.src = '';
+        }
+      });
+    }, { threshold: 0.5 });
+
+    videoObserver.observe(videoWrapper);
+
     // ── Navbar scroll shadow
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {

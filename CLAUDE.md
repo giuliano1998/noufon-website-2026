@@ -783,8 +783,8 @@ Antes de conectar Netlify, **TODAS** estas cosas deben estar ✅:
 
 ## 📞 CONTACTO & REFERENCIAS
 
-**Propietario**: Giuliano Rascanu  
-**Socio**: Ignacio  
+**Propietario**: Giuliano Raschetti 
+**Socio**: Ignacio Gianetto
 **WhatsApp**: +5491164518851  
 **Email**: info@noufon.com  
 **Dominio**: https://noufon.com  
