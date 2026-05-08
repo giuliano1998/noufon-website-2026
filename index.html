@@ -1322,6 +1322,133 @@
       .video-cta { width: 100%; }
       .video-cta .btn { width: 100%; text-align: center; }
     }
+
+    /* ── MEDIOS SECTION ─────────────────────────── */
+    #medios {
+      background: var(--white);
+    }
+
+    .medios-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 60px;
+    }
+
+    .medios-header .section-sub {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .medios-carousel-wrapper {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+
+    .medios-track-container {
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+    }
+
+    .medios-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .medios-slide {
+      min-width: 100%;
+    }
+
+    .medios-iframe-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      background: #000;
+    }
+
+    .medios-iframe-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .medios-slide-caption {
+      text-align: center;
+      padding: 14px 0 0;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #666;
+      letter-spacing: 0.01em;
+    }
+
+    .medios-btn {
+      position: absolute;
+      top: calc(50% - 22px);
+      transform: translateY(-50%);
+      background: var(--white);
+      border: 1.5px solid var(--gray-mid);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--dark);
+      transition: background 0.22s, border-color 0.22s, color 0.22s, box-shadow 0.22s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+    }
+
+    .medios-btn:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(45,212,191,0.35);
+    }
+
+    .medios-btn-prev { left: 0; }
+    .medios-btn-next { right: 0; }
+
+    .medios-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .medios-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gray-mid);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.25s, width 0.25s, border-radius 0.25s;
+    }
+
+    .medios-dot.active {
+      background: var(--teal);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .medios-carousel-wrapper { padding: 0 48px; }
+    }
+
+    @media (max-width: 480px) {
+      .medios-carousel-wrapper { padding: 0 36px; }
+      .medios-btn { width: 36px; height: 36px; }
+      .medios-btn svg { width: 15px; height: 15px; }
+      .medios-header { margin-bottom: 40px; }
+    }
   </style>
 </head>
 <body>
@@ -1578,6 +1705,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  <!-- ── MEDIOS ───────────────────────── -->
+  <section id="medios">
+    <div class="medios-header reveal">
+      <span class="section-label">Prensa</span>
+      <h2 class="section-title">NOUFON en los medios</h2>
+      <p class="section-sub">Nuestra propuesta ya está generando conversación pública sobre foco, convivencia y uso del celular en el ámbito educativo.</p>
+    </div>
+
+    <div class="medios-carousel-wrapper">
+      <div class="medios-track-container">
+        <div class="medios-track" id="mediosTrack">
+          <div class="medios-slide">
+            <div class="medios-iframe-wrapper">
+              <iframe src="https://www.youtube.com/embed/c_B3utzCnyY?start=2" title="NOUFON en Subrayado" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="medios-slide-caption">Entrevista en Subrayado</p>
+          </div>
+          <div class="medios-slide">
+            <div class="medios-iframe-wrapper">
+              <iframe src="https://www.youtube.com/embed/MsfubrZjmU0?start=17" title="NOUFON en los medios" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="medios-slide-caption">Cobertura en medios</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="medios-btn medios-btn-prev" id="mediosPrev" aria-label="Video anterior">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="medios-btn medios-btn-next" id="mediosNext" aria-label="Video siguiente">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
+    <div class="medios-dots" id="mediosDots">
+      <button class="medios-dot active" data-index="0" aria-label="Video 1"></button>
+      <button class="medios-dot" data-index="1" aria-label="Video 2"></button>
+    </div>
+  </section>
+
   <!-- ── FAQ ────────────────────────── -->
   <section id="faq">
     <div class="section-header reveal">
@@ -1788,6 +1955,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, { passive: true });
 
     // ── Popup
+
+    // ── Medios carousel
+    (function() {
+      const track = document.getElementById('mediosTrack');
+      const dots  = document.querySelectorAll('.medios-dot');
+      const total = dots.length;
+      let current = 0;
+
+      function goTo(i) {
+        current = (i + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+      }
+
+      document.getElementById('mediosPrev').addEventListener('click', () => goTo(current - 1));
+      document.getElementById('mediosNext').addEventListener('click', () => goTo(current + 1));
+      dots.forEach(dot => dot.addEventListener('click', () => goTo(+dot.dataset.index)));
+    })();
 
     // ── FAQ accordion
     document.querySelectorAll('.faq-question').forEach(btn => {
