@@ -271,6 +271,11 @@
           <span class="field-error" id="err-colegio">Ingresá al menos 4 letras.</span>
         </div>
         <div class="form-group">
+          <label for="telefono">Número de contacto *</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+54 9 11 1234 5678" required autocomplete="tel" />
+          <span class="field-error" id="err-telefono">Ingresá un número de teléfono válido.</span>
+        </div>
+        <div class="form-group">
           <label for="cargo">Tu cargo *</label>
           <select id="cargo" name="cargo" required>
             <option value="">Seleccioná tu rol</option>
@@ -380,21 +385,25 @@
       if (input) input.classList.toggle('invalid', visible);
     }
 
+    function telefonoValido(str) { return /^[\d\s\+\-\(\)]{7,}$/.test(str); }
+
     function validarForm(fd) {
       const nombre   = (fd.get('nombre')   || '').trim();
       const apellido = (fd.get('apellido') || '').trim();
       const email    = (fd.get('email')    || '').trim();
       const colegio  = (fd.get('colegio')  || '').trim();
+      const telefono = (fd.get('telefono') || '').trim();
       const cargo    = (fd.get('cargo')    || '').trim();
       const mensaje  = (fd.get('mensaje')  || '').trim();
 
       const errores = {
-        'err-nombre':   letras(nombre)   < 4,
-        'err-apellido': letras(apellido) < 4,
-        'err-email':    !emailValido(email),
-        'err-colegio':  letras(colegio)  < 4,
-        'err-cargo':    cargo === '',
-        'err-mensaje':  palabras(mensaje) < 4
+        'err-nombre':    letras(nombre)   < 4,
+        'err-apellido':  letras(apellido) < 4,
+        'err-email':     !emailValido(email),
+        'err-colegio':   letras(colegio)  < 4,
+        'err-telefono':  !telefonoValido(telefono),
+        'err-cargo':     cargo === '',
+        'err-mensaje':   palabras(mensaje) < 4
       };
 
       let hayError = false;
@@ -421,6 +430,7 @@
           apellido: (fd.get('apellido') || '').trim(),
           email:    (fd.get('email')    || '').trim(),
           colegio:  (fd.get('colegio')  || '').trim(),
+          telefono: (fd.get('telefono') || '').trim(),
           cargo:    (fd.get('cargo')    || '').trim(),
           mensaje:  (fd.get('mensaje')  || '').trim()
         };

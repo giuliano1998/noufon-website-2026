@@ -52,9 +52,10 @@
       e.preventDefault();
       var fd = new FormData(popupForm);
       var payload = {
-        nombre:  (fd.get('popup_nombre')  || '').trim(),
-        email:   (fd.get('popup_email')   || '').trim(),
-        colegio: (fd.get('popup_colegio') || '').trim()
+        nombre:   (fd.get('popup_nombre')   || '').trim(),
+        email:    (fd.get('popup_email')    || '').trim(),
+        colegio:  (fd.get('popup_colegio')  || '').trim(),
+        telefono: (fd.get('popup_telefono') || '').trim()
       };
 
       try {
