@@ -40,6 +40,7 @@ exports.handler = async (event) => {
       <h2>Nuevo contacto desde Noufon</h2>
       <p><strong>Nombre:</strong> ${data.nombre}</p>
       <p><strong>Email:</strong> ${data.email}</p>
+      <p><strong>Teléfono:</strong> ${data.telefono || 'No indicado'}</p>
       <p><strong>Colegio:</strong> ${data.colegio || 'No indicado'}</p>
       <p><strong>Cargo:</strong> ${data.cargo || 'No indicado'}</p>
       <p><strong>Mensaje:</strong> ${data.mensaje || 'No incluido'}</p>
