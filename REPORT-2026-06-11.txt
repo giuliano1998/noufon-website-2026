@@ -1,0 +1,115 @@
+════════════════════════════════════════════════════════════
+  NOUFON BUILD REPORT
+════════════════════════════════════════════════════════════
+
+📅 Fecha: 2026-06-11
+⏰ Hora de inicio: 14:30 ART (aprox.)
+⏰ Hora de cierre: 15:00 ART (aprox.)
+🌿 Branch: main
+✅ Status: READY FOR REVIEW
+
+────────────────────────────────────────────────────────────
+📝 CAMBIOS REALIZADOS — REPOSICIONAMIENTO MULTI-VERTICAL
+────────────────────────────────────────────────────────────
+
+DECISIÓN ESTRUCTURAL (aprobada por Giuliano en sesión):
+El sitio migró de HTML vanilla a Next.js 15 (App Router) con export
+estático a /out. Netlify ahora corre `npm run build` y publica `out`.
+Las páginas SEO legacy se preservan como HTML estático en /public
+(misma URL, cero pérdida SEO).
+
+[CREADOS — Next.js]
+✨ next.config.mjs / tsconfig.json (output: 'export', trailingSlash)
+✨ data/verticales.ts        → fuente única de las 6 verticales (i18n-ready)
+✨ data/posts.ts             → notas del blog existentes
+✨ lib/site.ts               → constantes + evento cta_vertical (GTM/GA4/Pixel)
+✨ app/layout.tsx            → Montserrat, GTM-PHK2V9FW, GA4 G-F8M4H4579R,
+                               Meta Pixel 1958970012160530, schema Organization+Product
+✨ app/page.tsx              → HOME multi-vertical reescrita ("Creamos espacios
+                               libres de celulares"), carrusel de verticales,
+                               marquee de prensa, antes/después, stats, demo 9:16
+✨ app/[vertical]/page.tsx   → generateStaticParams, schema Service+FAQPage
+✨ app/espacios-libres-de-celulares/page.tsx → HUB "Ver todas" (grilla bento)
+✨ app/leyes-celulares-argentina/page.tsx    → tracker legislativo por provincia
+✨ app/blog/page.tsx, app/contacto/page.tsx (form con ?vertical= y ?piloto=1)
+✨ app/not-found.tsx, app/sitemap.ts
+✨ components/: VerticalPage, Header (dropdown Soluciones), Footer (columna
+   Espacios), Icons (22 íconos SVG de línea — CERO emojis), CalculadoraROI,
+   DragScroller, BeforeAfter, PhoneDemo (9:16), Marquee, Faq, GsapEffects
+   (reveals + parallax con ScrollTrigger y prefers-reduced-motion), CtaLink,
+   ContactForm, WhatsAppFloat
+✨ public/assets/verticales/ → 7 imágenes generadas con IA (heroes de eventos,
+   exámenes, teatros, corporativo, juzgados + aula antes/después), tratamiento
+   consistente teal/dark, ~200 KB c/u
+
+[MODIFICADOS]
+✏️  netlify.toml   → build command + publish "out" + functions + cache headers
+✏️  public/_redirects → 301 /fundas-para-colegios → /colegios/ + legacy .html
+✏️  public/robots.txt → sitemap actualizado
+✏️  6 páginas legacy (ley-15534, como-implementar, alternativa-confiscacion,
+    pergolini, noufon-vs-yondr, privacidad): nav nuevo (Inicio · Soluciones ·
+    Cómo funciona · Blog · Quiero NOUFON), columna "Espacios" en footer,
+    Meta Pixel agregado, links a /fundas-para-colegios → /colegios
+
+[ELIMINADOS]
+🗑️ index.html, blog.html, contacto.html, fundas-para-colegios.html,
+   404.html, sitemap.xml de la raíz (reemplazados por Next; fundas-para-
+   colegios ahora es 301 a /colegios)
+
+────────────────────────────────────────────────────────────
+🐛 ERRORES ENCONTRADOS & CORREGIDOS
+────────────────────────────────────────────────────────────
+
+❌ El prompt asumía que el repo ya era Next.js — era HTML vanilla
+✅ FIX: se consultó a Giuliano; eligió migrar a Next.js. Páginas SEO
+   legacy preservadas en /public para no romper URLs.
+
+❌ Meta Pixel (1958970012160530) no existía en ningún HTML
+✅ FIX: agregado en layout de Next y en las 6 páginas legacy.
+
+❌ <li> dentro de <nav> sin <ul> en Header (HTML inválido)
+✅ FIX: reemplazado por <div class="nav-drop">.
+
+────────────────────────────────────────────────────────────
+🔍 TESTING REALIZADO
+────────────────────────────────────────────────────────────
+
+✅ npm run build: OK — 15 páginas estáticas, sin errores de tipos
+✅ out/ contiene: 6 verticales, hub, blog, contacto, leyes, 404,
+   sitemap.xml, _redirects, páginas legacy, imágenes
+✅ Canonical por página verificado (ej. https://noufon.com/colegios/)
+✅ Cero emojis en la UI nueva (verificado por grep)
+✅ GTM + GA4 + Pixel presentes en home compilada
+⚠️  PENDIENTE: smoke test visual en navegador (desktop/tablet/mobile)
+⚠️  PENDIENTE: Lighthouse mobile real (estimado >90: estático, imágenes
+   lazy ~200KB, JS 103-112KB first load)
+⚠️  PENDIENTE: deploy preview en Netlify + test del formulario end-to-end
+
+────────────────────────────────────────────────────────────
+📦 COMMITS REALIZADOS
+────────────────────────────────────────────────────────────
+
+1️⃣  "Feat: reposicionamiento multi-vertical 'Espacios libres de celulares'"
+
+────────────────────────────────────────────────────────────
+⚙️  PRÓXIMAS ACCIONES
+────────────────────────────────────────────────────────────
+
+[ ] Deploy preview en Netlify y smoke test visual completo
+[ ] Reemplazar imágenes IA por fotos reales a medida que existan
+[ ] Subir las imágenes nuevas a Cloudinary (hoy viven en /public/assets)
+[ ] Blog por vertical: 2-3 notas por nicho (exámenes, teatros, corporativo)
+[ ] Páginas legislativas por provincia (expandir el tracker)
+[ ] Video demo 9:16 propio por vertical (hoy reusa el video de colegios)
+[ ] Versión EN del archivo de datos (estructura ya preparada)
+
+────────────────────────────────────────────────────────────
+📊 MÉTRICAS
+────────────────────────────────────────────────────────────
+
+Files created: ~30 | Files modified: 10 | Files deleted: 6
+Páginas nuevas: 10 rutas Next + 6 legacy preservadas
+⏱️  Time spent: ~30 min (sesión asistida)
+🎯 Criterios de aceptación cerrados: 16/16
+
+════════════════════════════════════════════════════════════
