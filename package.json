@@ -1,9 +1,24 @@
 {
   "name": "noufon-website",
-  "version": "1.0.0",
-  "description": "NOUFON website — sistema de fundas magnéticas para colegios",
+  "version": "2.0.0",
+  "description": "NOUFON — Espacios libres de celulares",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
-    "nodemailer": "^6.9.13"
+    "gsap": "^3.12.5",
+    "next": "^15.3.0",
+    "nodemailer": "^6.9.13",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.6.0"
   }
 }

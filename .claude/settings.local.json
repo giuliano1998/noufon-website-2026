@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(ls /Users/giulianoraschetti/noufon-website-2026/*.jpeg /Users/giulianoraschetti/noufon-website-2026/*.jpg /Users/giulianoraschetti/noufon-website-2026/*.pdf)",
+      "Bash(grep -n \"GTM-PHK2V9FW''\\);</script>\" /Users/giulianoraschetti/noufon-website-2026/*.html)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//Users/giulianoraschetti/noufon-website-2026/**)",
+      "Bash(done)",
+      "Bash(ls /Users/giulianoraschetti/noufon-website-2026/*.html)",
+      "Bash(do)",
+      "Bash(sed -i '' 's|href=\"\"index\\\\.html#|href=\"\"/#|g' 's|href=\"\"index\\\\.html\"\"|href=\"\"/\"\"|g' 's|href=\"\"blog\\\\.html\"\"|href=\"\"/blog\"\"|g' 's|href=\"\"contacto\\\\.html\"\"|href=\"\"/contacto\"\"|g' 's|href=\"\"politica-de-privacidad\\\\.html\"\"|href=\"\"/politica-de-privacidad\"\"|g' 's|href=\"\"ley-15534-celulares-escuela\\\\.html\"\"|href=\"\"/ley-15534-celulares-escuela\"\"|g' 's|href=\"\"fundas-para-colegios\\\\.html\"\"|href=\"\"/fundas-para-colegios\"\"|g' 's|href=\"\"como-implementar-politica-de-celulares-en-escuela\\\\.html\"\"|href=\"\"/como-implementar-politica-de-celulares-en-escuela\"\"|g' \"$f\")",
+      "Bash(perl -i -pe ':*)",
+      "Bash(grep -v \"^$\")",
+      "Bash(npx serve:*)",
+      "Bash(git pull:*)",
+      "Bash(git fetch *)",
+      "Bash(git -C /Users/giulianoraschetti/Desktop/noufon-web remote -v)",
+      "Skill(seo-competitor-pages)",
+      "Skill(seo-competitor-pages:*)",
+      "WebSearch",
+      "Bash(grep -iE \"\\\\.\\(jpg|jpeg|png|webp|svg\\)$\")",
+      "Skill(seo-page)",
+      "Skill(seo-page:*)",
+      "Bash(git -C /Users/giulianoraschetti/noufon-website-2026 diff --stat)",
+      "Bash(git -C /Users/giulianoraschetti/noufon-website-2026 add alternativa-confiscacion-celulares.html blog.html como-implementar-politica-de-celulares-en-escuela.html contacto.html fundas-para-colegios.html index.html ley-15534-celulares-escuela.html noufon-mario-pergolini.html noufon-vs-yondr.html politica-de-privacidad.html)",
+      "Bash(git -C /Users/giulianoraschetti/noufon-website-2026 commit -m ' *)",
+      "Bash(netlify status *)",
+      "Bash(netlify link *)",
+      "Bash(netlify sites:list)",
+      "WebFetch(domain:noufon.com)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{redirect_url}\" https://noufon.com)",
+      "Bash(curl -sI https://noufon.com)",
+      "Bash(netlify api *)",
+      "Bash(gh api *)",
+      "Bash(curl -s https://noufon.com/index.html)",
+      "Bash(python3)"
+    ]
+  }
+}

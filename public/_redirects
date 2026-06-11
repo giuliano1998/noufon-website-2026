@@ -1,0 +1,19 @@
+# Netlify Redirects — NOUFON (multi-vertical 2026)
+
+# ── Reposicionamiento: colegios absorbe la página histórica (301) ──
+/fundas-para-colegios            /colegios/    301!
+/fundas-para-colegios.html       /colegios/    301!
+
+# ── Legacy .html → clean URLs (301 permanentes) ──
+/index.html                                              /                                                    301
+/blog.html                                               /blog/                                               301
+/contacto.html                                           /contacto/                                           301
+/ley-15534-celulares-escuela.html                        /ley-15534-celulares-escuela                         301
+/como-implementar-politica-de-celulares-en-escuela.html  /como-implementar-politica-de-celulares-en-escuela   301
+/alternativa-confiscacion-celulares.html                 /alternativa-confiscacion-celulares                  301
+/noufon-mario-pergolini.html                             /noufon-mario-pergolini                              301
+/noufon-vs-yondr.html                                    /noufon-vs-yondr                                     301
+/politica-de-privacidad.html                             /politica-de-privacidad                              301
+
+# ── 404 fallback ──
+/*    /404.html    404
