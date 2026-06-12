@@ -18,6 +18,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${SITE.url}/leyes-celulares-argentina/`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE.url}/blog/`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    ...[
+      'eventos-sin-celulares',
+      'celulares-examenes-internacionales',
+      'teatro-sin-celulares',
+      'confidencialidad-reuniones-directorio',
+      'celulares-embajadas-diplomacia',
+    ].map((slug) => ({
+      url: `${SITE.url}/blog/${slug}/`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
     { url: `${SITE.url}/contacto/`, lastModified: now, changeFrequency: 'yearly', priority: 0.7 },
   ];
 

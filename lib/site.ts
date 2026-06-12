@@ -2,7 +2,7 @@ export const SITE = {
   url: 'https://noufon.com',
   name: 'NOUFON',
   tagline: 'Creamos espacios libres de celulares.',
-  email: 'info@noufon.com',
+  email: 'hola@noufonarg.com',
   whatsapp: 'https://wa.me/+5491164518851',
   instagram: 'https://www.instagram.com/noufon.arg/',
   linkedin: 'https://www.linkedin.com/company/noufon',

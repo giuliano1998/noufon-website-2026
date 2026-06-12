@@ -50,7 +50,7 @@ exports.handler = async (event) => {
 
     const infoResult = await transporter.sendMail({
       from: process.env.SMTP_FROM,
-      to: 'info@noufon.com',
+      to: 'hola@noufonarg.com',
       subject: `Nuevo contacto: ${data.nombre}`,
       html: emailHTML
     });

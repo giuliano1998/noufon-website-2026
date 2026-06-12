@@ -8,7 +8,7 @@ import DragScroller from '@/components/DragScroller';
 import Marquee from '@/components/Marquee';
 import BeforeAfter from '@/components/BeforeAfter';
 import CalculadoraROI from '@/components/CalculadoraROI';
-import PhoneDemo from '@/components/PhoneDemo';
+import VideoSection from '@/components/VideoSection';
 
 export const metadata: Metadata = {
   title: 'NOUFON — Creamos espacios libres de celulares',
@@ -68,11 +68,11 @@ export default function Home() {
       <div style={{ borderBottom: '1px solid var(--gray-mid)' }}>
         <Marquee
           items={[
-            { text: 'Destacado por Mario Pergolini en Neura', icon: 'mic' },
-            { text: 'Alineado con la Ley 15.534 (PBA)', icon: 'scale' },
+            { text: 'Tecnología Faraday', icon: 'signalOff' },
+            { text: 'Cierre Magnético', icon: 'lock' },
             { text: 'Respaldado por la evidencia UNESCO', icon: 'globe' },
-            { text: 'Cobertura en Subrayado', icon: 'spark' },
-            { text: '84% más participación en aulas', icon: 'focus' },
+            { text: 'Tela de Neopreno', icon: 'shield' },
+            { text: 'Encuentros Presentes', icon: 'users' },
             { text: 'Sin confiscación: el dispositivo nunca cambia de manos', icon: 'hand' },
           ]}
         />
@@ -97,6 +97,9 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* ── VIDEO GRANDE — NOUFON en acción (ancla del nav "Cómo funciona") ── */}
+      <VideoSection />
 
       {/* ── CARRUSEL DE VERTICALES (drag + snap) ── */}
       <section className="section section-gray" style={{ overflow: 'hidden' }}>
@@ -161,11 +164,11 @@ export default function Home() {
             </div>
             <div className="stat">
               <div className="stat-num">72%</div>
-              <p className="stat-label">menos sanciones disciplinarias vinculadas a dispositivos</p>
+              <p className="stat-label">en la mejora de experiencias por mayor atención de los participantes</p>
             </div>
             <div className="stat">
               <div className="stat-num">68%</div>
-              <p className="stat-label">de mejora en rendimiento académico, medible en semanas</p>
+              <p className="stat-label">de aumento en la confidencialidad de los proyectos</p>
             </div>
           </div>
         </div>
@@ -197,26 +200,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── DEMO 9:16 ── */}
-      <section className="section">
-        <div className="container demo-split">
-          <div data-reveal>
-            <span className="kicker">NOUFON en acción</span>
-            <h2 className="h2" style={{ marginBottom: '1.2rem' }}>Mirá el sistema funcionando.</h2>
-            <p className="lead" style={{ marginBottom: '2rem' }}>
-              La funda magnética se cierra en un movimiento y se desbloquea solo en las estaciones de
-              salida. El dispositivo nunca deja de ser de su dueño.
-            </p>
-            <CtaLink href="/contacto/" vertical="home" label="Quiero NOUFON (demo)">
-              Quiero NOUFON
-            </CtaLink>
-          </div>
-          <PhoneDemo src="https://www.youtube.com/embed/BU4OpfYtV3k" title="NOUFON — demo del sistema" />
-        </div>
-      </section>
-
       {/* ── BLOG editorial ── */}
-      <section className="section section-gray">
+      <section className="section">
         <div className="container">
           <div data-reveal style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '2rem', flexWrap: 'wrap' }}>
             <div>

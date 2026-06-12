@@ -59,6 +59,19 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
         </div>
       </section>
 
+      {/* ── GALERÍA contextual del nicho ── */}
+      {vertical.galeria.length > 1 && (
+        <section className="section" style={{ paddingTop: 0 }}>
+          <div className="container">
+            <DragScroller className="gal" ariaLabel={`Galería ${copy.nav}`}>
+              {vertical.galeria.map((src, i) => (
+                <img key={src} src={src} alt={`${copy.h1} — espacio libre de celulares ${i + 1}`} loading="lazy" draggable={false} />
+              ))}
+            </DragScroller>
+          </div>
+        </section>
+      )}
+
       {/* ── BENEFICIOS bento asimétrico (consecuencias positivas) ── */}
       <section className="section section-gray" id="beneficios">
         <div className="container">
@@ -149,23 +162,6 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
         </section>
       )}
 
-      {/* ── GALERÍA drag ── */}
-      {vertical.galeria.length > 1 && (
-        <section className="section" style={{ paddingTop: copy.testimonial ? undefined : 0 }}>
-          <div className="container">
-            <div data-reveal>
-              <span className="kicker">En acción</span>
-              <h2 className="h2">NOUFON en el espacio real.</h2>
-            </div>
-            <DragScroller className="gal" ariaLabel={`Galería ${copy.nav}`}>
-              {vertical.galeria.map((src, i) => (
-                <img key={src} src={src} alt={`${copy.h1} — NOUFON ${i + 1}`} loading="lazy" draggable={false} />
-              ))}
-            </DragScroller>
-          </div>
-        </section>
-      )}
-
       {/* ── FAQ ── */}
       {copy.faqs && copy.faqs.length > 0 && (
         <section className="section section-gray">
@@ -185,7 +181,7 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
           <div className="container" data-reveal>
             <p className="lead">
               ¿Buscás el marco legal? Leé sobre la{' '}
-              <a href="/ley-15534-celulares-escuela" style={{ color: 'var(--teal-deep)', fontWeight: 700 }}>
+              <a href="/ley-15534-celulares-escuela.html" style={{ color: 'var(--teal-deep)', fontWeight: 700 }}>
                 Ley 15.534
               </a>{' '}
               o el{' '}

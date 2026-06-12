@@ -10,7 +10,7 @@ const orgLabel: Record<string, string> = {
   'examenes-internacionales': 'Centro de examen / institución',
   teatros: 'Teatro / sala',
   corporativo: 'Empresa',
-  juzgados: 'Juzgado / organismo',
+  embajadas: 'Embajada / organismo',
 };
 
 export default function ContactForm() {
@@ -135,7 +135,7 @@ export default function ContactForm() {
 
         <p className="form-consent" style={{ margin: '1.4rem 0' }}>
           Al enviar este formulario aceptás nuestra{' '}
-          <a href="/politica-de-privacidad">Política de Privacidad</a>. Tus datos se usan
+          <a href="/politica-de-privacidad.html">Política de Privacidad</a>. Tus datos se usan
           exclusivamente para responder tu consulta.
         </p>
 

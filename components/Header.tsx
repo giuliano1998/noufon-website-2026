@@ -12,7 +12,7 @@ const navIcons: Record<string, IconName> = {
   'examenes-internacionales': 'fileCheck',
   teatros: 'mask',
   corporativo: 'briefcase',
-  juzgados: 'scale',
+  embajadas: 'building',
 };
 
 export default function Header() {
@@ -76,7 +76,7 @@ export default function Header() {
             </div>
           </div>
 
-          <Link href="/#como-funciona" onClick={closeAll}>Cómo funciona</Link>
+          <Link href="/#noufon-en-accion" onClick={closeAll}>Cómo funciona</Link>
           <Link href="/blog/" onClick={closeAll}>Blog</Link>
           <Link href="/contacto/" onClick={closeAll}>Contacto</Link>
           <Link href="/contacto/" className="nav-cta" onClick={closeAll}>

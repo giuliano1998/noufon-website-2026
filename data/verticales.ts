@@ -66,7 +66,12 @@ export const verticales: Vertical[] = [
     slug: 'colegios',
     heroImage: CLOUDINARY.aulaAlumno,
     demoVideo: 'https://www.youtube.com/embed/BU4OpfYtV3k',
-    galeria: [CLOUDINARY.aulaAlumno, CLOUDINARY.aulaSistema, CLOUDINARY.docente, CLOUDINARY.aulaLibre],
+    galeria: [
+      '/assets/verticales/colegios-recreo.jpg',
+      '/assets/verticales/colegios-aula.jpg',
+      '/assets/verticales/colegios-pasillo.jpg',
+      CLOUDINARY.aulaAlumno,
+    ],
     ctaHref: '/contacto?vertical=colegios',
     locales: {
       es: {
@@ -130,7 +135,12 @@ export const verticales: Vertical[] = [
   {
     slug: 'eventos',
     heroImage: '/assets/verticales/eventos-hero.jpg',
-    galeria: ['/assets/verticales/eventos-hero.jpg'],
+    galeria: [
+      '/assets/verticales/eventos-casamiento.jpg',
+      '/assets/verticales/eventos-cumple.jpg',
+      '/assets/verticales/eventos-concierto.jpg',
+      '/assets/verticales/eventos-hero.jpg',
+    ],
     ctaHref: '/contacto?vertical=eventos',
     locales: {
       es: {
@@ -188,7 +198,11 @@ export const verticales: Vertical[] = [
   {
     slug: 'examenes-internacionales',
     heroImage: '/assets/verticales/examenes-hero.jpg',
-    galeria: ['/assets/verticales/examenes-hero.jpg'],
+    galeria: [
+      '/assets/verticales/examenes-hojas.jpg',
+      '/assets/verticales/examenes-ingreso.jpg',
+      '/assets/verticales/examenes-supervisor.jpg',
+    ],
     ctaHref: '/contacto?vertical=examenes-internacionales',
     locales: {
       es: {
@@ -246,7 +260,11 @@ export const verticales: Vertical[] = [
   {
     slug: 'teatros',
     heroImage: '/assets/verticales/teatros-hero.jpg',
-    galeria: ['/assets/verticales/teatros-hero.jpg'],
+    galeria: [
+      '/assets/verticales/teatros-publico.jpg',
+      '/assets/verticales/teatros-actores.jpg',
+      '/assets/verticales/teatros-foyer.jpg',
+    ],
     ctaHref: '/contacto?vertical=teatros',
     locales: {
       es: {
@@ -303,7 +321,11 @@ export const verticales: Vertical[] = [
   {
     slug: 'corporativo',
     heroImage: '/assets/verticales/corporativo-hero.jpg',
-    galeria: ['/assets/verticales/corporativo-hero.jpg'],
+    galeria: [
+      '/assets/verticales/corporativo-workshop.jpg',
+      '/assets/verticales/corporativo-directorio.jpg',
+      '/assets/verticales/corporativo-oficina.jpg',
+    ],
     ctaHref: '/contacto?vertical=corporativo',
     locales: {
       es: {
@@ -356,58 +378,63 @@ export const verticales: Vertical[] = [
     },
   },
 
-  // ── JUZGADOS / LEGAL ──────────────────────────────────────────────────────
+  // ── EMBAJADAS / DIPLOMACIA ────────────────────────────────────────────────
   {
-    slug: 'juzgados',
-    heroImage: '/assets/verticales/juzgados-hero.jpg',
-    galeria: ['/assets/verticales/juzgados-hero.jpg'],
-    ctaHref: '/contacto?vertical=juzgados',
+    slug: 'embajadas',
+    heroImage: '/assets/verticales/embajadas-hero.jpg',
+    galeria: [
+      '/assets/verticales/embajadas-bilateral.jpg',
+      '/assets/verticales/embajadas-delegacion.jpg',
+      '/assets/verticales/embajadas-hero.jpg',
+    ],
+    ctaHref: '/contacto?vertical=embajadas',
     locales: {
       es: {
-        nav: 'Juzgados',
-        h1: 'JUZGADOS Y ÁMBITO LEGAL',
-        kicker: 'Profesional · Justicia',
-        valueProp: 'Confidencialidad y cumplimiento procesal sin custodiar dispositivos.',
-        ctaLabel: 'Consultá por tu juzgado',
+        nav: 'Embajadas',
+        h1: 'EMBAJADAS Y DIPLOMACIA',
+        kicker: 'Profesional · Diplomacia',
+        valueProp: 'Reuniones diplomáticas con confidencialidad absoluta.',
+        ctaLabel: 'Consultá por tu embajada',
         ctaSecundario: 'Pedí un piloto',
-        problemaTitulo: 'Una grabación no autorizada puede comprometer un proceso entero.',
+        problemaTitulo: 'En diplomacia, un celular activo es un canal abierto.',
         problema:
-          'En una sala de audiencias, un celular activo es un riesgo procesal: grabaciones no autorizadas que se filtran, testigos y jurados expuestos en redes, y la posibilidad de nulidades o incidentes que demoran causas. La alternativa de retener dispositivos en mesa de entradas convierte al juzgado en depositario de cientos de equipos — con los reclamos y la logística que eso implica.',
+          'Cada teléfono que entra a una reunión de alto nivel es un micrófono, una cámara y una vía de salida de información. Las filtraciones diplomáticas rara vez requieren sofisticación: una foto a un documento, una grabación discreta, una notificación leída por la persona equivocada. Y la alternativa de retener dispositivos en recepción es delicada cuando se trata de delegaciones extranjeras, funcionarios y visitas oficiales.',
         beneficios: [
           {
-            icon: 'gavel',
-            titulo: 'Sin grabaciones no autorizadas',
-            texto: 'El bloqueo de señal y el sellado magnético hacen físicamente imposible registrar o transmitir lo que sucede en la sala.',
+            icon: 'lock',
+            titulo: 'Confidencialidad de nivel de Estado',
+            texto: 'Sin cámaras, micrófonos ni canales de salida activos en la sala. Lo que se conversa en la reunión queda en la reunión.',
           },
           {
-            icon: 'shield',
-            titulo: 'Testigos y jurados protegidos',
-            texto: 'Las personas declaran sin la amenaza de aparecer en redes. Menos presión, testimonios más libres, identidades resguardadas.',
+            icon: 'globe',
+            titulo: 'Protocolo respetado',
+            texto: 'Nadie entrega su dispositivo: cada diplomático o visita conserva su teléfono enfundado. Sin fricciones de cortesía ni custodia de equipos de terceros.',
           },
           {
-            icon: 'scale',
-            titulo: 'Cumplimiento normativo verificable',
-            texto: 'El sistema materializa las restricciones de dispositivos que ya prevén los reglamentos internos, sin depender del control visual del personal.',
+            icon: 'fileCheck',
+            titulo: 'Cumplimiento de protocolos de seguridad',
+            texto: 'El sistema convierte la política de "sin dispositivos" en un mecanismo físico verificable, exigible también a visitas y proveedores.',
           },
           {
-            icon: 'hand',
-            titulo: 'El dispositivo nunca cambia de manos',
-            texto: 'Cada persona conserva su teléfono enfundado. El juzgado no custodia bienes ajenos ni gestiona depósitos y devoluciones.',
+            icon: 'users',
+            titulo: 'Reuniones presentes y ágiles',
+            texto: 'Sin pantallas sobre la mesa, las conversaciones sensibles avanzan más rápido y con la atención completa de todas las partes.',
           },
         ],
         comoFunciona: [
-          { titulo: 'En el control de acceso', texto: 'Junto al control de seguridad existente, cada persona coloca su celular en una funda NOUFON y la lleva consigo.' },
-          { titulo: 'Durante la audiencia', texto: 'Los dispositivos permanecen inertes dentro de la sala: sin grabación, sin transmisión, sin interrupciones.' },
-          { titulo: 'A la salida', texto: 'Estaciones de desbloqueo en los accesos liberan las fundas al retirarse. Sin depósitos, sin tickets, sin reclamos.' },
+          { titulo: 'En la recepción', texto: 'Junto al control de acceso existente, cada persona coloca su celular en una funda NOUFON y la lleva consigo durante toda la visita.' },
+          { titulo: 'Durante la reunión', texto: 'El forro Faraday corta WiFi, Bluetooth y datos: sin grabaciones, sin fotos, sin transmisiones. La sala queda sellada digitalmente.' },
+          { titulo: 'A la salida', texto: 'La estación de desbloqueo libera la funda en segundos. Sin depósitos, sin tickets, sin demoras protocolares.' },
         ],
         faqs: [
-          { q: '¿Cómo se manejan las excepciones (abogados, peritos, prensa autorizada)?', a: 'El protocolo admite excepciones definidas por el tribunal: las personas autorizadas se identifican en el acceso y conservan sus dispositivos operativos.' },
+          { q: '¿Cómo se manejan las excepciones (seguridad, personal autorizado)?', a: 'El protocolo admite excepciones definidas por la sede: el personal autorizado se identifica en el acceso y conserva sus dispositivos operativos.' },
+          { q: '¿Es apropiado pedirle esto a una delegación extranjera?', a: 'Esa es la ventaja frente a la retención: nadie entrega su teléfono ni queda registrado. Conservar el dispositivo enfundado es una cortesía aceptable y cada vez más habitual en reuniones sensibles.' },
           { q: '¿Requiere obras o instalación en el edificio?', a: 'No. El sistema es portátil: fundas y estaciones de desbloqueo se despliegan en los accesos existentes sin intervención edilicia.' },
         ],
         seo: {
-          title: 'Juzgados libres de celulares | NOUFON',
-          description: 'Audiencias sin grabaciones no autorizadas: fundas con bloqueo de señal para juzgados, sin custodia de dispositivos ni depósitos.',
-          keywords: ['celulares en juzgados', 'grabaciones no autorizadas audiencia', 'seguridad sala de audiencias'],
+          title: 'Embajadas y diplomacia sin celulares | NOUFON',
+          description: 'Reuniones diplomáticas con confidencialidad absoluta: fundas con bloqueo de señal, sin custodiar dispositivos de delegaciones ni visitas.',
+          keywords: ['seguridad embajadas', 'reuniones diplomáticas confidenciales', 'celulares en embajadas'],
         },
       },
     },

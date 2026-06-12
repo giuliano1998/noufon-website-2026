@@ -34,9 +34,9 @@ export default function Footer() {
             <ul>
               <li><Link href="/blog/">Blog</Link></li>
               <li><Link href="/leyes-celulares-argentina/">Leyes por provincia</Link></li>
-              <li><a href="/ley-15534-celulares-escuela">Ley 15.534</a></li>
-              <li><a href="/noufon-vs-yondr">NOUFON vs. Yondr</a></li>
-              <li><a href="/noufon-mario-pergolini">NOUFON en los medios</a></li>
+              <li><a href="/ley-15534-celulares-escuela.html">Ley 15.534</a></li>
+              <li><a href="/noufon-vs-yondr.html">NOUFON vs. Yondr</a></li>
+              <li><a href="/noufon-mario-pergolini.html">NOUFON en los medios</a></li>
             </ul>
           </div>
 
@@ -47,7 +47,7 @@ export default function Footer() {
               <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
               <li><a href={SITE.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></li>
               <li><a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a href="/politica-de-privacidad">Política de privacidad</a></li>
+              <li><a href="/politica-de-privacidad.html">Política de privacidad</a></li>
             </ul>
           </div>
         </div>
