@@ -1,0 +1,74 @@
+════════════════════════════════════════════════════════════
+  NOUFON BUILD REPORT
+════════════════════════════════════════════════════════════
+
+📅 Fecha: 2026-06-12
+🌿 Branch: main
+✅ Status: READY FOR REVIEW
+
+────────────────────────────────────────────────────────────
+📝 CAMBIOS REALIZADOS (iteración post-review de Giuliano)
+────────────────────────────────────────────────────────────
+
+✏️  HOME
+   - Nueva sección de video grande 16:9 "NOUFON en acción" inmediatamente
+     después de "La tesis NOUFON" (lazy, autoplay mute al entrar en viewport)
+   - El botón "Cómo funciona" del navbar ahora ancla a esa sección (/#noufon-en-accion)
+   - Eliminada la sección demo con mockup de teléfono 9:16
+   - Stats: 72% → "en la mejora de experiencias por mayor atención de los
+     participantes"; 68% → "de aumento en la confidencialidad de los proyectos"
+   - Marquee: Tecnología Faraday · Cierre Magnético · Tela de Neopreno ·
+     Encuentros Presentes (+ UNESCO y "sin confiscación" que se mantienen)
+
+✏️  VERTICALES
+   - Juzgados ELIMINADA y reemplazada por EMBAJADAS (/embajadas): copy completo
+     (problema, 4 beneficios, 3 pasos, 3 FAQs, SEO), hero nuevo, ícono propio
+   - Galería contextual del nicho reubicada ENTRE "El problema" y "Lo que
+     cambia" en todas las verticales, con imágenes IA casuales por nicho:
+     colegios (recreo, aula, pasillo), eventos (casamiento, cumpleaños,
+     concierto), exámenes (hojas, ingreso, supervisor), teatros (público,
+     actores, foyer), corporativo (workshop, directorio, oficina),
+     embajadas (bilateral, delegación, sala)
+   - 18 imágenes nuevas generadas + optimizadas (~80-160 KB c/u)
+
+✏️  RESPONSIVE
+   - FIX: el dropdown "Soluciones" dentro del menú hamburguesa quedaba
+     desplazado (transform translateX heredado del desktop). Ahora se apila
+     correctamente dentro del menú.
+
+✏️  EMAIL
+   - hola@noufonarg.com en footer, contacto, schema, páginas legacy y en el
+     destinatario de la función Netlify (send-contact-email.js).
+   - NOTA: revisar en Netlify la variable SMTP_FROM si corresponde cambiarla.
+
+✏️  BLOG
+   - FIX links rotos en next dev: las notas legacy se linkean ahora con .html
+     (en producción Netlify redirige 301 a la URL limpia; canonicals intactos)
+   - "¿Seguís confiscando celulares?" pasó a ser la nota destacada (primera)
+   - 5 notas SEO nuevas (rutas Next con schema Article):
+     /blog/eventos-sin-celulares
+     /blog/celulares-examenes-internacionales
+     /blog/teatro-sin-celulares
+     /blog/confidencialidad-reuniones-directorio
+     /blog/celulares-embajadas-diplomacia
+   - Sitemap regenerado (sin /juzgados, con /embajadas y las 5 notas)
+
+────────────────────────────────────────────────────────────
+🔍 TESTING REALIZADO
+────────────────────────────────────────────────────────────
+✅ npm run build OK (20 rutas estáticas, sin errores de tipos)
+✅ Smoke test en next dev: /, /embajadas/, /blog/, nota nueva, notas legacy
+   .html y /contacto?vertical=embajadas → todos 200
+✅ Cero referencias a juzgados ni a info@noufon.com en el output
+⚠️  PENDIENTE: verificación visual mobile del dropdown (fix aplicado, falta ojo humano)
+
+────────────────────────────────────────────────────────────
+⚙️  PRÓXIMAS ACCIONES
+────────────────────────────────────────────────────────────
+[ ] npm install + npm run dev en la Mac para re-chequear visual
+[ ] Confirmar SMTP_FROM/casilla hola@noufonarg.com operativa antes del deploy
+[ ] Subir imágenes nuevas a Cloudinary cuando definan la librería final
+[ ] Video propio por vertical (hoy todas reusan el video de colegios)
+
+📦 Commit: ca6b08d
+════════════════════════════════════════════════════════════
