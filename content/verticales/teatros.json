@@ -1,0 +1,82 @@
+{
+  "slug": "teatros",
+  "orden": 3,
+  "heroImage": "/assets/verticales/teatros-hero.jpg",
+  "heroVideo": "",
+  "demoVideo": "",
+  "galeria": [
+    {
+      "src": "/assets/verticales/teatros-publico.jpg"
+    },
+    {
+      "src": "/assets/verticales/teatros-actores.jpg"
+    },
+    {
+      "src": "/assets/verticales/teatros-foyer.jpg"
+    }
+  ],
+  "nav": "Teatros",
+  "h1": "TEATROS Y ESPECTÁCULOS",
+  "kicker": "Artes escénicas en vivo",
+  "valueProp": "Que la obra se respete y el público se sumerja.",
+  "ctaLabel": "Llevá NOUFON a tu sala",
+  "ctaSecundario": "Pedí un piloto",
+  "problemaTitulo": "Una pantalla encendida rompe lo que el teatro tarda una hora en construir.",
+  "problema": "La inmersión es el activo central del teatro: se construye escena por escena y se destruye con un solo brillo de pantalla en la tercera fila. A eso se suman las grabaciones no autorizadas de estrenos que circulan antes de la segunda función, y un reclamo cada vez más explícito de directores e intérpretes: queremos funciones sin celulares.",
+  "beneficios": [
+    {
+      "icon": "moon",
+      "titulo": "Sala sin luces de pantalla",
+      "texto": "La oscuridad de la sala vuelve a ser total. La luz pertenece al escenario y la atención del público también."
+    },
+    {
+      "icon": "eye",
+      "titulo": "Inmersión total del público",
+      "texto": "Sin la tentación del bolsillo vibrando, el espectador entra en la obra y se queda ahí hasta el aplauso final."
+    },
+    {
+      "icon": "mic",
+      "titulo": "Respeto a los intérpretes",
+      "texto": "Los actores trabajan frente a personas, no frente a lentes. El pedido expreso de artistas y directores, cumplido de forma estructural."
+    },
+    {
+      "icon": "lock",
+      "titulo": "Material de estreno protegido",
+      "texto": "Sin grabaciones piratas: el texto, la puesta y las sorpresas de la obra llegan al público como el director quiso."
+    }
+  ],
+  "comoFunciona": [
+    {
+      "titulo": "En el foyer",
+      "texto": "Al cortar ticket, cada espectador desliza su celular en una funda NOUFON y la guarda en su bolsillo o cartera."
+    },
+    {
+      "titulo": "Durante la función",
+      "texto": "El dispositivo queda mudo y oscuro: sin señal, sin notificaciones, sin tentación. La sala completa, en la obra."
+    },
+    {
+      "titulo": "Al salir",
+      "texto": "Estaciones de desbloqueo en el foyer liberan las fundas a la salida — justo a tiempo para la foto con la marquesina."
+    }
+  ],
+  "testimonial": null,
+  "faqs": [
+    {
+      "q": "¿Cómo reacciona el público?",
+      "a": "Con sorpresa al principio y agradecimiento al final: la experiencia de una sala completamente oscura y en silencio se volvió tan rara que se siente premium. Muchas salas lo comunican como un diferencial de la función."
+    },
+    {
+      "q": "¿Sirve para funciones puntuales o solo por temporada?",
+      "a": "Ambas. Hay producciones que lo usan solo en estrenos y avant-premieres, y salas que lo adoptan para toda la temporada."
+    }
+  ],
+  "seo": {
+    "title": "Teatros y espectáculos libres de celulares | NOUFON",
+    "description": "Funciones sin pantallas ni grabaciones piratas: fundas magnéticas con bloqueo de señal para salas de teatro y espectáculos en vivo.",
+    "keywords": [
+      "teatro sin celulares",
+      "funciones sin celulares",
+      "grabaciones no autorizadas teatro"
+    ]
+  }
+}

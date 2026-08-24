@@ -1,0 +1,82 @@
+{
+  "slug": "corporativo",
+  "orden": 4,
+  "heroImage": "/assets/verticales/corporativo-hero.jpg",
+  "heroVideo": "",
+  "demoVideo": "",
+  "galeria": [
+    {
+      "src": "/assets/verticales/corporativo-workshop.jpg"
+    },
+    {
+      "src": "/assets/verticales/corporativo-directorio.jpg"
+    },
+    {
+      "src": "/assets/verticales/corporativo-oficina.jpg"
+    }
+  ],
+  "nav": "Corporativo",
+  "h1": "REUNIONES CORPORATIVAS",
+  "kicker": "Profesional · Oficinas",
+  "valueProp": "Reuniones confidenciales y con foco real.",
+  "ctaLabel": "Protegé tus reuniones",
+  "ctaSecundario": "Pedí un piloto",
+  "problemaTitulo": "La información más sensible de tu empresa viaja en los bolsillos de la sala.",
+  "problema": "Cada celular en una reunión de directorio es un micrófono, una cámara y un canal de salida. Las filtraciones de información sensible rara vez son sofisticadas: una foto a una pantalla, una grabación discreta, un mensaje en el momento equivocado. Y aun sin mala intención, una sala donde todos miran su teléfono es una sala donde nadie está presente — y la reunión dura el doble.",
+  "beneficios": [
+    {
+      "icon": "lock",
+      "titulo": "Confidencialidad asegurada",
+      "texto": "Sin cámaras, micrófonos ni canales de salida activos en la sala. Lo que se discute en la reunión queda en la reunión."
+    },
+    {
+      "icon": "clock",
+      "titulo": "Reuniones más cortas y productivas",
+      "texto": "Sin el ping-pong de notificaciones, las decisiones se toman antes. Equipos que usan espacios sin celulares reportan reuniones notablemente más breves."
+    },
+    {
+      "icon": "fileCheck",
+      "titulo": "Cumplimiento de políticas de seguridad",
+      "texto": "NOUFON convierte la política de \"no dispositivos\" de tu área de seguridad de la información en un mecanismo físico verificable."
+    },
+    {
+      "icon": "users",
+      "titulo": "Equipos presentes",
+      "texto": "La señal cultural es clara: este tiempo es para pensar juntos. La calidad de la conversación cambia desde la primera reunión."
+    }
+  ],
+  "comoFunciona": [
+    {
+      "titulo": "Al entrar a la sala",
+      "texto": "Cada participante coloca su celular en una funda NOUFON y la conserva consigo. Nadie entrega su dispositivo."
+    },
+    {
+      "titulo": "Durante la reunión",
+      "texto": "El forro Faraday corta toda señal: sin grabaciones, sin fotos, sin mensajes salientes. La sala queda sellada digitalmente."
+    },
+    {
+      "titulo": "Al terminar",
+      "texto": "La estación de desbloqueo en la puerta libera las fundas en segundos. El protocolo completo agrega menos de un minuto."
+    }
+  ],
+  "testimonial": null,
+  "faqs": [
+    {
+      "q": "¿Y si alguien espera una llamada urgente?",
+      "a": "La recepción o asistente de la sala puede mantener un canal de contacto de emergencia. El participante sale, desbloquea su funda en la estación y atiende afuera."
+    },
+    {
+      "q": "¿Sirve para off-sites y town halls?",
+      "a": "Sí. Además de salas de directorio, el sistema se usa en off-sites, capacitaciones y eventos internos donde el foco o la confidencialidad importan."
+    }
+  ],
+  "seo": {
+    "title": "Reuniones corporativas sin celulares | NOUFON",
+    "description": "Confidencialidad y foco para reuniones de directorio y oficinas: fundas con bloqueo de señal, sin custodia de dispositivos.",
+    "keywords": [
+      "reuniones confidenciales",
+      "seguridad de la información reuniones",
+      "oficina sin celulares"
+    ]
+  }
+}

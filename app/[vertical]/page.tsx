@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getVertical, verticales } from '@/data/verticales';
+import { getAllVerticales, getVertical } from '@/lib/content';
 import VerticalPage from '@/components/VerticalPage';
 import { SITE } from '@/lib/site';
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return verticales.map((v) => ({ vertical: v.slug }));
+  return getAllVerticales().map((v) => ({ vertical: v.slug }));
 }
 
 export async function generateMetadata({
@@ -18,16 +18,15 @@ export async function generateMetadata({
   const { vertical: slug } = await params;
   const v = getVertical(slug);
   if (!v) return {};
-  const { seo } = v.copy;
   const url = `${SITE.url}/${slug}/`;
   return {
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords,
+    title: v.seo.title,
+    description: v.seo.description,
+    keywords: v.seo.keywords,
     alternates: { canonical: url },
     openGraph: {
-      title: seo.title,
-      description: seo.description,
+      title: v.seo.title,
+      description: v.seo.description,
       url,
       images: [{ url: v.heroImage.startsWith('http') ? v.heroImage : `${SITE.url}${v.heroImage}` }],
     },
@@ -38,27 +37,27 @@ export default async function Page({ params }: { params: Promise<{ vertical: str
   const { vertical: slug } = await params;
   const v = getVertical(slug);
   if (!v) notFound();
-  const copy = v.copy;
 
   const schema: Record<string, unknown>[] = [
     {
       '@context': 'https://schema.org',
       '@type': 'Service',
       '@id': `${SITE.url}/${slug}/#service`,
-      name: copy.seo.title,
-      description: copy.seo.description,
+      name: v.seo.title,
+      description: v.seo.description,
       serviceType: 'Espacios libres de celulares',
       provider: { '@id': `${SITE.url}/#organization` },
       areaServed: 'AR',
       url: `${SITE.url}/${slug}/`,
     },
   ];
-  if (copy.faqs?.length) {
+
+  if (v.faqs?.length) {
     schema.push({
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
       '@id': `${SITE.url}/${slug}/#faq`,
-      mainEntity: copy.faqs.map((f) => ({
+      mainEntity: v.faqs.map((f) => ({
         '@type': 'Question',
         name: f.q,
         acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -72,7 +71,7 @@ export default async function Page({ params }: { params: Promise<{ vertical: str
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <VerticalPage vertical={v} copy={copy} />
+      <VerticalPage vertical={v} />
     </>
   );
 }

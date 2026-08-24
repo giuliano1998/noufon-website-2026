@@ -1,9 +1,10 @@
-import { SITE } from '@/lib/site';
+import { getSite } from '@/lib/content';
 
 export default function WhatsAppFloat() {
+  const site = getSite();
   return (
     <a
-      href={SITE.whatsapp}
+      href={site.whatsapp}
       className="wa-float"
       target="_blank"
       rel="noopener noreferrer"

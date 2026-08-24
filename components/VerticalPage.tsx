@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { Vertical, VerticalCopy } from '@/data/verticales';
+import type { Vertical } from '@/lib/types';
 import { Icon } from '@/components/Icons';
 import CtaLink from '@/components/CtaLink';
 import Faq from '@/components/Faq';
@@ -7,12 +7,13 @@ import PhoneDemo from '@/components/PhoneDemo';
 import DragScroller from '@/components/DragScroller';
 
 /*
- * <VerticalPage> — ÚNICO template de vertical, alimentado por data/verticales.ts.
+ * <VerticalPage> — ÚNICO template de vertical.
+ * Se alimenta de content/verticales/<slug>.json (editable desde /admin).
  * Ritmo de secciones deliberadamente variado:
- * hero full-bleed → editorial 1 col → bento asimétrico → pasos sobre dark →
- * demo split (si hay video) → quote → galería drag → FAQ → CTA final.
+ * hero full-bleed → editorial 1 col → galería → bento asimétrico →
+ * pasos sobre dark → demo 9:16 → quote → FAQ → CTA final.
  */
-export default function VerticalPage({ vertical, copy }: { vertical: Vertical; copy: VerticalCopy }) {
+export default function VerticalPage({ vertical }: { vertical: Vertical }) {
   const { slug } = vertical;
 
   return (
@@ -21,7 +22,7 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
       <section className="hero" style={{ minHeight: '88vh' }}>
         <img
           src={vertical.heroImage}
-          alt={copy.h1}
+          alt={vertical.h1}
           className="hero-img-bg"
           data-parallax
           fetchPriority="high"
@@ -29,22 +30,22 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
         <div className="hero-img-veil" />
         <div className="hero-mesh" />
         <div className="hero-inner container on-dark">
-          <span className="kicker">{copy.kicker}</span>
+          <span className="kicker">{vertical.kicker}</span>
           <h1 className="display" style={{ maxWidth: '14ch' }}>
-            {copy.h1}
+            {vertical.h1}
           </h1>
-          <p className="hero-sub">{copy.valueProp}</p>
+          <p className="hero-sub">{vertical.valueProp}</p>
           <div className="hero-ctas">
-            <CtaLink href={vertical.ctaHref} vertical={slug} label={copy.ctaLabel}>
-              {copy.ctaLabel}
+            <CtaLink href={vertical.ctaHref} vertical={slug} label={vertical.ctaLabel}>
+              {vertical.ctaLabel}
             </CtaLink>
             <CtaLink
               href={`${vertical.ctaHref}&piloto=1`}
               vertical={slug}
-              label={copy.ctaSecundario}
+              label={vertical.ctaSecundario}
               className="btn btn-outline"
             >
-              {copy.ctaSecundario}
+              {vertical.ctaSecundario}
             </CtaLink>
           </div>
         </div>
@@ -54,8 +55,8 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
       <section className="section">
         <div className="container" style={{ maxWidth: 780 }} data-reveal>
           <span className="kicker">El problema</span>
-          <h2 className="h2" style={{ marginBottom: '1.4rem' }}>{copy.problemaTitulo}</h2>
-          <p className="lead">{copy.problema}</p>
+          <h2 className="h2" style={{ marginBottom: '1.4rem' }}>{vertical.problemaTitulo}</h2>
+          <p className="lead">{vertical.problema}</p>
         </div>
       </section>
 
@@ -63,9 +64,15 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
       {vertical.galeria.length > 1 && (
         <section className="section" style={{ paddingTop: 0 }}>
           <div className="container">
-            <DragScroller className="gal" ariaLabel={`Galería ${copy.nav}`}>
+            <DragScroller className="gal" ariaLabel={`Galería ${vertical.nav}`}>
               {vertical.galeria.map((src, i) => (
-                <img key={src} src={src} alt={`${copy.h1} — espacio libre de celulares ${i + 1}`} loading="lazy" draggable={false} />
+                <img
+                  key={src}
+                  src={src}
+                  alt={`${vertical.h1} — espacio libre de celulares ${i + 1}`}
+                  loading="lazy"
+                  draggable={false}
+                />
               ))}
             </DragScroller>
           </div>
@@ -80,26 +87,26 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
             <h2 className="h2">Consecuencias de un espacio libre de celulares.</h2>
           </div>
           <div className="bento" data-reveal="stagger">
-            <div className="bento-item bento-feature">
-              <div className="icon-wrap"><Icon name={copy.beneficios[0].icon} size={34} /></div>
-              <h3 className="h3" style={{ fontSize: '1.5rem' }}>{copy.beneficios[0].titulo}</h3>
-              <p style={{ marginTop: '0.6rem' }}>{copy.beneficios[0].texto}</p>
-            </div>
-            <div className="bento-item bento-side">
-              <div className="icon-wrap"><Icon name={copy.beneficios[1].icon} /></div>
-              <h3 className="h3">{copy.beneficios[1].titulo}</h3>
-              <p>{copy.beneficios[1].texto}</p>
-            </div>
-            <div className="bento-item bento-half">
-              <div className="icon-wrap"><Icon name={copy.beneficios[2].icon} /></div>
-              <h3 className="h3">{copy.beneficios[2].titulo}</h3>
-              <p>{copy.beneficios[2].texto}</p>
-            </div>
-            <div className="bento-item bento-half">
-              <div className="icon-wrap"><Icon name={copy.beneficios[3].icon} /></div>
-              <h3 className="h3">{copy.beneficios[3].titulo}</h3>
-              <p>{copy.beneficios[3].texto}</p>
-            </div>
+            {vertical.beneficios.map((b, i) => (
+              <div
+                key={b.titulo}
+                className={
+                  i === 0
+                    ? 'bento-item bento-feature'
+                    : i === 1
+                      ? 'bento-item bento-side'
+                      : 'bento-item bento-half'
+                }
+              >
+                <div className="icon-wrap">
+                  <Icon name={b.icon} size={i === 0 ? 34 : 26} />
+                </div>
+                <h3 className="h3" style={i === 0 ? { fontSize: '1.5rem' } : undefined}>
+                  {b.titulo}
+                </h3>
+                <p style={i === 0 ? { marginTop: '0.6rem' } : undefined}>{b.texto}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -112,7 +119,7 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
             <h2 className="h2">Un mecanismo simple. El dispositivo nunca cambia de manos.</h2>
           </div>
           <div className="steps" data-reveal="stagger">
-            {copy.comoFunciona.map((paso, i) => (
+            {vertical.comoFunciona.map((paso, i) => (
               <div className="step" key={paso.titulo}>
                 <span className="step-num">Paso {i + 1}</span>
                 <h3 className="h3">{paso.titulo}</h3>
@@ -136,17 +143,20 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
                 La funda magnética con forro Faraday bloquea WiFi, Bluetooth y datos. El dispositivo
                 queda inerte — visible, propio y fuera de juego.
               </p>
-              <CtaLink href={vertical.ctaHref} vertical={slug} label={copy.ctaLabel}>
-                {copy.ctaLabel}
+              <CtaLink href={vertical.ctaHref} vertical={slug} label={vertical.ctaLabel}>
+                {vertical.ctaLabel}
               </CtaLink>
             </div>
-            <PhoneDemo src={vertical.demoVideo ?? vertical.heroVideo!} title={`Demo NOUFON — ${copy.nav}`} />
+            <PhoneDemo
+              src={(vertical.demoVideo || vertical.heroVideo) as string}
+              title={`Demo NOUFON — ${vertical.nav}`}
+            />
           </div>
         </section>
       )}
 
       {/* ── TESTIMONIAL editorial ── */}
-      {copy.testimonial && (
+      {vertical.testimonial?.quote && (
         <section className="section section-gray">
           <div className="container quote-wrap" data-reveal>
             <div className="quote-mark">
@@ -154,23 +164,23 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
                 <path d="M9.5 5C6.5 6.5 4.5 9 4.5 12.5V19h6.2v-6.5H7.2c0-2.3 1.1-3.9 3.3-5L9.5 5zm9 0c-3 1.5-5 4-5 7.5V19h6.2v-6.5h-3.5c0-2.3 1.1-3.9 3.3-5L18.5 5z" />
               </svg>
             </div>
-            <p className="quote">{copy.testimonial.quote}</p>
+            <p className="quote">{vertical.testimonial.quote}</p>
             <p className="quote-attr">
-              <strong>{copy.testimonial.autor}</strong> — {copy.testimonial.rol}
+              <strong>{vertical.testimonial.autor}</strong> — {vertical.testimonial.rol}
             </p>
           </div>
         </section>
       )}
 
       {/* ── FAQ ── */}
-      {copy.faqs && copy.faqs.length > 0 && (
+      {vertical.faqs?.length > 0 && (
         <section className="section section-gray">
           <div className="container">
             <div data-reveal style={{ textAlign: 'center' }}>
               <span className="kicker">Preguntas frecuentes</span>
-              <h2 className="h2">Lo que nos preguntan sobre {copy.nav.toLowerCase()}.</h2>
+              <h2 className="h2">Lo que nos preguntan sobre {vertical.nav.toLowerCase()}.</h2>
             </div>
-            <Faq items={copy.faqs} />
+            <Faq items={vertical.faqs} />
           </div>
         </section>
       )}
@@ -199,23 +209,23 @@ export default function VerticalPage({ vertical, copy }: { vertical: Vertical; c
         <div className="container" data-reveal>
           <span className="kicker">Siguiente paso</span>
           <h2 className="display" style={{ fontSize: 'clamp(2rem, 4.6vw, 3.4rem)' }}>
-            {copy.valueProp}
+            {vertical.valueProp}
           </h2>
           <p className="lead">
             Contanos sobre tu espacio y te respondemos en menos de 24 horas hábiles, con información
             concreta y sin compromiso.
           </p>
           <div className="hero-ctas" style={{ justifyContent: 'center' }}>
-            <CtaLink href={vertical.ctaHref} vertical={slug} label={`${copy.ctaLabel} (final)`}>
-              {copy.ctaLabel}
+            <CtaLink href={vertical.ctaHref} vertical={slug} label={`${vertical.ctaLabel} (final)`}>
+              {vertical.ctaLabel}
             </CtaLink>
             <CtaLink
               href={`${vertical.ctaHref}&piloto=1`}
               vertical={slug}
-              label={`${copy.ctaSecundario} (final)`}
+              label={`${vertical.ctaSecundario} (final)`}
               className="btn btn-outline"
             >
-              {copy.ctaSecundario}
+              {vertical.ctaSecundario}
             </CtaLink>
           </div>
         </div>

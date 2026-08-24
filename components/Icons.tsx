@@ -1,4 +1,4 @@
-import type { IconName } from '@/data/verticales';
+import type { IconName } from '@/lib/types';
 
 /*
  * Set de íconos de línea NOUFON — trazo 1.75, 24×24, currentColor.

@@ -1,0 +1,86 @@
+{
+  "slug": "examenes-internacionales",
+  "orden": 2,
+  "heroImage": "/assets/verticales/examenes-hero.jpg",
+  "heroVideo": "",
+  "demoVideo": "",
+  "galeria": [
+    {
+      "src": "/assets/verticales/examenes-hojas.jpg"
+    },
+    {
+      "src": "/assets/verticales/examenes-ingreso.jpg"
+    },
+    {
+      "src": "/assets/verticales/examenes-supervisor.jpg"
+    }
+  ],
+  "nav": "Exámenes internacionales",
+  "h1": "EXÁMENES INTERNACIONALES",
+  "kicker": "IELTS · TOEFL · Cambridge · SAT · GMAT",
+  "valueProp": "Integridad del examen garantizada, certificación que vale.",
+  "ctaLabel": "Asegurá la integridad de tu examen",
+  "ctaSecundario": "Pedí un piloto",
+  "problemaTitulo": "Un solo dispositivo puede costar la acreditación del centro.",
+  "problema": "Los boards internacionales — Cambridge, IELTS, College Board — exigen protocolos anti-fraude cada vez más estrictos. Un celular que entra a la sala es un riesgo doble: para la validez del examen de todos los candidatos y para la acreditación del centro. Y la alternativa tradicional, retener dispositivos, convierte al centro en custodio de cientos de equipos ajenos de alto valor.",
+  "beneficios": [
+    {
+      "icon": "signalOff",
+      "titulo": "Cero posibilidad de fraude digital",
+      "texto": "El forro Faraday bloquea WiFi, Bluetooth y datos. No hay forma de consultar, transmitir ni recibir información durante el examen."
+    },
+    {
+      "icon": "fileCheck",
+      "titulo": "Protocolos de los boards, cumplidos",
+      "texto": "El sistema documenta una política de dispositivos verificable, alineada con los requerimientos de Cambridge, IELTS, SAT y GMAT."
+    },
+    {
+      "icon": "hand",
+      "titulo": "La posesión la conserva el candidato",
+      "texto": "Sin custodia de bienes ajenos ni mesas llenas de teléfonos: cada candidato mantiene su dispositivo enfundado consigo."
+    },
+    {
+      "icon": "badge",
+      "titulo": "La certificación, protegida",
+      "texto": "Una sesión sin incidentes protege lo que más vale: la validez del resultado de cada candidato y la reputación del centro."
+    }
+  ],
+  "comoFunciona": [
+    {
+      "titulo": "En el check-in",
+      "texto": "Junto con la verificación de identidad, cada candidato coloca su celular en una funda NOUFON y la conserva consigo o bajo su asiento."
+    },
+    {
+      "titulo": "Durante el examen",
+      "texto": "Los dispositivos quedan inertes: sin señal, sin notificaciones, sin acceso. Los supervisores se concentran en el examen, no en vigilar bolsillos."
+    },
+    {
+      "titulo": "Al finalizar",
+      "texto": "Los candidatos desbloquean su funda en la estación de salida y se retiran con su teléfono. Sin filas de devolución ni reclamos."
+    }
+  ],
+  "testimonial": null,
+  "faqs": [
+    {
+      "q": "¿El sistema cumple con los requisitos de Cambridge / IELTS?",
+      "a": "NOUFON implementa el principio que exigen los boards: ningún dispositivo accesible ni conectado durante la sesión. Entregamos documentación del protocolo para presentar ante el board correspondiente."
+    },
+    {
+      "q": "¿Qué pasa con relojes inteligentes y otros dispositivos?",
+      "a": "Las fundas admiten smartwatches, auriculares y dispositivos pequeños. Todo lo que emite señal entra en la funda."
+    },
+    {
+      "q": "¿El centro asume responsabilidad por los equipos?",
+      "a": "No. Esa es la diferencia clave con la retención: el candidato nunca entrega su dispositivo, por lo que el centro no custodia bienes ajenos."
+    }
+  ],
+  "seo": {
+    "title": "Integridad en exámenes internacionales | NOUFON",
+    "description": "Fundas con bloqueo de señal para centros de examen IELTS, TOEFL, Cambridge, SAT y GMAT: cero fraude digital sin custodiar dispositivos.",
+    "keywords": [
+      "seguridad examen internacional",
+      "celulares examen",
+      "protocolo anti fraude examen"
+    ]
+  }
+}

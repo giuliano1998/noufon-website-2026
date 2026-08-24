@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import type { Faq as FaqType } from '@/data/verticales';
+import type { Faq as FaqType } from '@/lib/types';
 
 function FaqItem({ q, a }: FaqType) {
   const [open, setOpen] = useState(false);

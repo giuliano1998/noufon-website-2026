@@ -2,23 +2,28 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import ContactForm from '@/components/ContactForm';
 import { SITE } from '@/lib/site';
+import { getSite, getVerticalesNav } from '@/lib/content';
 import { Icon } from '@/components/Icons';
 
 export const metadata: Metadata = {
   title: 'Contacto | NOUFON',
   description:
-    'Contanos sobre tu espacio — colegio, evento, teatro, empresa o juzgado — y te respondemos en menos de 24 horas hábiles.',
+    'Contanos sobre tu espacio — colegio, evento, teatro, empresa o embajada — y te respondemos en menos de 24 horas hábiles.',
   alternates: { canonical: `${SITE.url}/contacto/` },
 };
 
 export default function Contacto() {
+  const site = getSite();
+  // Mapa slug → nombre, para que el formulario (cliente) no lea archivos.
+  const verticalLabels = Object.fromEntries(getVerticalesNav().map((v) => [v.slug, v.nav]));
+
   return (
     <main>
       <section className="section" style={{ paddingTop: 150 }}>
         <div className="container split" style={{ alignItems: 'start' }}>
           <div data-reveal>
             <Suspense fallback={null}>
-              <ContactForm />
+              <ContactForm verticalLabels={verticalLabels} />
             </Suspense>
           </div>
 
@@ -42,13 +47,13 @@ export default function Contacto() {
                 </div>
               </div>
               <div style={{ marginTop: '2rem' }}>
-                <a href={SITE.whatsapp} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                <a href={site.whatsapp} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
                   Hablar por WhatsApp
                 </a>
               </div>
               <p style={{ marginTop: '1.4rem', fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', position: 'relative', zIndex: 1 }}>
                 O escribinos a{' '}
-                <a href={`mailto:${SITE.email}`} style={{ color: 'var(--teal)' }}>{SITE.email}</a>
+                <a href={`mailto:${site.email}`} style={{ color: 'var(--teal)' }}>{site.email}</a>
               </p>
             </div>
           </aside>

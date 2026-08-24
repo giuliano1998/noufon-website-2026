@@ -26,3 +26,25 @@
   for = "/_next/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# ── Panel de contenido (/admin) ───────────────────────────────────────────────
+# El panel no guarda credenciales, pero igual lo blindamos:
+#  · noindex  → que no aparezca en Google ni en buscadores.
+#  · DENY     → no se puede incrustar en un iframe (evita clickjacking:
+#               que un sitio malicioso te muestre el panel escondido y te
+#               robe los clicks mientras estás con la sesión abierta).
+#  · no-store → el navegador no cachea la página del panel.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "no-referrer"
+    Cache-Control = "no-store"
+
+# El endpoint del formulario nunca debe cachearse ni indexarse.
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"

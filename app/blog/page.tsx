@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { posts } from '@/data/posts';
+import { getAllPosts } from '@/lib/content';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -9,24 +9,25 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/blog/` },
 };
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Blog',
-  '@id': `${SITE.url}/blog/#blog`,
-  url: `${SITE.url}/blog/`,
-  name: 'Blog NOUFON',
-  inLanguage: 'es',
-  publisher: { '@id': `${SITE.url}/#organization` },
-  blogPost: posts.map((p) => ({
-    '@type': 'BlogPosting',
-    headline: p.titulo,
-    url: `${SITE.url}${p.href}`,
-    image: p.imagen.startsWith('http') ? p.imagen : `${SITE.url}${p.imagen}`,
-  })),
-};
-
 export default function Blog() {
+  const posts = getAllPosts();
   const [destacada, ...resto] = posts;
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${SITE.url}/blog/#blog`,
+    url: `${SITE.url}/blog/`,
+    name: 'Blog NOUFON',
+    inLanguage: 'es',
+    publisher: { '@id': `${SITE.url}/#organization` },
+    blogPost: posts.map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.titulo,
+      url: `${SITE.url}${p.href}`,
+      image: p.imagen.startsWith('http') ? p.imagen : `${SITE.url}${p.imagen}`,
+    })),
+  };
 
   return (
     <main>
@@ -54,7 +55,7 @@ export default function Blog() {
             <div>
               <span className="kicker">{destacada.tag}</span>
               <h2 className="h2" style={{ marginBottom: '1rem' }}>{destacada.titulo}</h2>
-              <p className="lead">{destacada.resumen}</p>
+              <p className="lead">{destacada.bajada}</p>
               <span className="btn-ghost" style={{ marginTop: '1.4rem' }}>Leer la nota →</span>
             </div>
           </a>
@@ -84,7 +85,7 @@ export default function Blog() {
                 />
                 <span>
                   <strong style={{ fontSize: '1.05rem', display: 'block', marginBottom: '0.3rem' }}>{p.titulo}</strong>
-                  <span style={{ color: 'var(--text-soft)', fontSize: '0.92rem' }}>{p.resumen}</span>
+                  <span style={{ color: 'var(--text-soft)', fontSize: '0.92rem' }}>{p.bajada}</span>
                 </span>
                 <span className="kicker" style={{ margin: 0 }}>{p.tag}</span>
               </a>

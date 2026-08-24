@@ -1,0 +1,97 @@
+{
+  "slug": "colegios",
+  "orden": 0,
+  "heroImage": "https://res.cloudinary.com/dubsnpevb/image/upload/v1773091714/WhatsApp_Image_2026-03-09_at_6.09.35_PM_smbkuz.jpg",
+  "heroVideo": "",
+  "demoVideo": "https://www.youtube.com/embed/BU4OpfYtV3k",
+  "galeria": [
+    {
+      "src": "/assets/verticales/colegios-recreo.jpg"
+    },
+    {
+      "src": "/assets/verticales/colegios-aula.jpg"
+    },
+    {
+      "src": "/assets/verticales/colegios-pasillo.jpg"
+    },
+    {
+      "src": "https://res.cloudinary.com/dubsnpevb/image/upload/v1773091714/WhatsApp_Image_2026-03-09_at_6.09.35_PM_smbkuz.jpg"
+    }
+  ],
+  "nav": "Colegios",
+  "h1": "COLEGIOS Y AULAS",
+  "kicker": "Educación",
+  "valueProp": "Aulas donde los docentes enseñan y los alumnos participan.",
+  "ctaLabel": "Implementalo en tu colegio",
+  "ctaSecundario": "Pedí un piloto",
+  "problemaTitulo": "No es falta de voluntad. Es estructura.",
+  "problema": "Pedirle a un adolescente que ignore su celular es como pedirle que ignore una televisión encendida al lado de su escritorio. Las soluciones que dependen de la buena voluntad del alumno fallan; las que generan confrontación, también. Los docentes pierden hasta un 20% de cada clase gestionando dispositivos, y el 72% de las sanciones disciplinarias en secundaria involucra un teléfono. La única solución que funciona es la que cambia la estructura del aula.",
+  "beneficios": [
+    {
+      "icon": "focus",
+      "titulo": "Concentración real",
+      "texto": "Sin celular a la vista, la atención vuelve sola. Menos interrupciones, más aprendizaje efectivo en cada clase — los colegios reportan 84% más participación."
+    },
+    {
+      "icon": "users",
+      "titulo": "Vínculos en el recreo",
+      "texto": "El recreo vuelve a ser un espacio de encuentro real. Los chicos charlan, juegan y se relacionan sin una pantalla de por medio."
+    },
+    {
+      "icon": "teacher",
+      "titulo": "Docentes enfocados en enseñar",
+      "texto": "Se termina el \"guardá el teléfono\". El sistema hace el trabajo y el docente recupera el 100% de su energía para la clase."
+    },
+    {
+      "icon": "shield",
+      "titulo": "Fin del ciberbullying en clase",
+      "texto": "Sin celulares activos desaparecen los espacios donde sucede: los chats, las grabaciones y las publicaciones en tiempo real."
+    }
+  ],
+  "comoFunciona": [
+    {
+      "titulo": "El alumno llega al aula",
+      "texto": "Coloca su celular en la funda magnética NOUFON. El dispositivo sigue siendo suyo — queda fuera de alcance, no fuera de su posesión."
+    },
+    {
+      "titulo": "El docente enseña sin interrupciones",
+      "texto": "No hay negociación ni vigilancia. El forro Faraday bloquea toda señal y el diseño del espacio hace el trabajo."
+    },
+    {
+      "titulo": "Suena el timbre",
+      "texto": "El alumno retira su celular. Sin conflictos, sin registros, sin burocracia."
+    }
+  ],
+  "testimonial": {
+    "quote": "La diferencia entre una política y un sistema: una política dice \"no usar el celular\". Un sistema lo hace innecesario.",
+    "autor": "Equipo NOUFON",
+    "rol": "Tesis de diseño del producto"
+  },
+  "faqs": [
+    {
+      "q": "¿NOUFON cumple con la Ley N° 15.534?",
+      "a": "Sí. NOUFON fue diseñado en línea con los requerimientos de la Ley N° 15.534, que restringe el uso de dispositivos móviles en instituciones educativas de la Provincia de Buenos Aires. Provee el mecanismo estructural para implementar la restricción sin conflictos disciplinarios."
+    },
+    {
+      "q": "¿Cuánto tarda en implementarse?",
+      "a": "Entre 3 y 4 semanas desde el pedido hasta el primer día de uso. No requiere obras, software ni capacitación docente: el sistema es físico y autoexplicativo."
+    },
+    {
+      "q": "¿El colegio custodia los celulares?",
+      "a": "No. A diferencia de la confiscación, con NOUFON el alumno conserva la posesión física de su dispositivo en todo momento. El colegio no asume responsabilidad sobre bienes ajenos."
+    },
+    {
+      "q": "¿Qué resultados reportan los colegios?",
+      "a": "84% de aumento en participación estudiantil, 72% de reducción en sanciones disciplinarias y 68% de mejora en rendimiento académico, medibles desde las primeras semanas."
+    }
+  ],
+  "seo": {
+    "title": "Aulas libres de celulares para colegios | NOUFON",
+    "description": "Sistema de fundas magnéticas para colegios secundarios. Sin apps, sin confiscaciones, sin conflictos. Cumplí la Ley 15.534 desde el primer día.",
+    "keywords": [
+      "celulares en colegios",
+      "ley 15534",
+      "fundas magnéticas colegios"
+    ]
+  }
+}

@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# El panel de contenido no debe indexarse (las imágenes de /uploads sí,
+# para que aparezcan en Google Imágenes).
+Disallow: /admin/
+
 Sitemap: https://noufon.com/sitemap.xml

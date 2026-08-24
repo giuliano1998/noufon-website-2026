@@ -2,7 +2,14 @@
 
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { getVertical } from '@/data/verticales';
+
+/*
+ * Componente CLIENTE. Recibe las etiquetas por props desde la página de
+ * contacto (servidor) para no tener que leer archivos desde el navegador.
+ *
+ * Seguridad: incluye un campo trampa ("website") oculto. Las personas nunca
+ * lo completan; los bots sí. La función de Netlify descarta esos envíos.
+ */
 
 const orgLabel: Record<string, string> = {
   colegios: 'Nombre del colegio',
@@ -13,11 +20,15 @@ const orgLabel: Record<string, string> = {
   embajadas: 'Embajada / organismo',
 };
 
-export default function ContactForm() {
+export default function ContactForm({
+  verticalLabels = {},
+}: {
+  verticalLabels?: Record<string, string>;
+}) {
   const params = useSearchParams();
   const vertical = params.get('vertical') ?? '';
   const piloto = params.get('piloto') === '1';
-  const v = getVertical(vertical);
+  const nombreVertical = verticalLabels[vertical] ?? '';
 
   const [enviando, setEnviando] = useState(false);
   const [ok, setOk] = useState(false);
@@ -27,9 +38,13 @@ export default function ContactForm() {
 
   const titulo = useMemo(() => {
     if (piloto) return 'Pedí un piloto';
-    if (v) return `Hablemos sobre ${v.copy.nav.toLowerCase() === 'colegios' ? 'tu colegio' : v.copy.nav.toLowerCase()}`;
+    if (nombreVertical) {
+      return `Hablemos sobre ${
+        nombreVertical.toLowerCase() === 'colegios' ? 'tu colegio' : nombreVertical.toLowerCase()
+      }`;
+    }
     return 'Hablemos sobre tu espacio';
-  }, [piloto, v]);
+  }, [piloto, nombreVertical]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -57,6 +72,7 @@ export default function ContactForm() {
       colegio: String(fd.get('organizacion') ?? '').trim(),
       cargo: String(fd.get('cargo') ?? '').trim(),
       mensaje: `${etiquetas} ${String(fd.get('mensaje') ?? '').trim()}`.trim(),
+      website: String(fd.get('website') ?? ''), // campo trampa
     };
 
     setEnviando(true);
@@ -81,7 +97,7 @@ export default function ContactForm() {
   if (ok) {
     return (
       <div className="form-ok" role="status">
-        ¡Gracias! Recibimos tu consulta{vertical ? ` sobre ${v?.copy.nav.toLowerCase() ?? vertical}` : ''} y
+        ¡Gracias! Recibimos tu consulta{nombreVertical ? ` sobre ${nombreVertical.toLowerCase()}` : ''} y
         te respondemos en menos de 24 horas hábiles.
       </div>
     );
@@ -99,32 +115,38 @@ export default function ContactForm() {
         <div className="form-grid">
           <div className="form-field">
             <label htmlFor="f-nombre">Nombre *</label>
-            <input id="f-nombre" name="nombre" type="text" required autoComplete="given-name" placeholder="Tu nombre" />
+            <input id="f-nombre" name="nombre" type="text" required autoComplete="given-name" placeholder="Tu nombre" maxLength={60} />
           </div>
           <div className="form-field">
             <label htmlFor="f-apellido">Apellido *</label>
-            <input id="f-apellido" name="apellido" type="text" required autoComplete="family-name" placeholder="Tu apellido" />
+            <input id="f-apellido" name="apellido" type="text" required autoComplete="family-name" placeholder="Tu apellido" maxLength={60} />
           </div>
           <div className="form-field full">
             <label htmlFor="f-email">Email *</label>
-            <input id="f-email" name="email" type="email" required autoComplete="email" placeholder="vos@organizacion.com" />
+            <input id="f-email" name="email" type="email" required autoComplete="email" placeholder="vos@organizacion.com" maxLength={160} />
           </div>
           <div className="form-field">
             <label htmlFor="f-org">{labelOrg} *</label>
-            <input id="f-org" name="organizacion" type="text" required placeholder={labelOrg} />
+            <input id="f-org" name="organizacion" type="text" required placeholder={labelOrg} maxLength={160} />
           </div>
           <div className="form-field">
             <label htmlFor="f-tel">Número de contacto *</label>
-            <input id="f-tel" name="telefono" type="tel" required autoComplete="tel" placeholder="+54 9 11 1234 5678" />
+            <input id="f-tel" name="telefono" type="tel" required autoComplete="tel" placeholder="+54 9 11 1234 5678" maxLength={40} />
           </div>
           <div className="form-field full">
             <label htmlFor="f-cargo">Tu rol</label>
-            <input id="f-cargo" name="cargo" type="text" placeholder="Director/a, productor/a, gerente…" />
+            <input id="f-cargo" name="cargo" type="text" placeholder="Director/a, productor/a, gerente…" maxLength={120} />
           </div>
           <div className="form-field full">
             <label htmlFor="f-mensaje">¿Qué querés saber?</label>
-            <textarea id="f-mensaje" name="mensaje" placeholder="Contanos sobre tu espacio o hacé tu consulta…" />
+            <textarea id="f-mensaje" name="mensaje" placeholder="Contanos sobre tu espacio o hacé tu consulta…" maxLength={3000} />
           </div>
+        </div>
+
+        {/* Campo trampa anti-bots: oculto y fuera del orden de tabulación. */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }}>
+          <label htmlFor="f-website">No completar</label>
+          <input id="f-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
         </div>
 
         {error && (

@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { SITE } from '@/lib/site';
+import { getSite, getVerticalesNav } from '@/lib/content';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
@@ -30,7 +31,9 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image' },
 };
 
-const orgSchema = {
+function construirOrgSchema() {
+  const site = getSite();
+  return {
   '@context': 'https://schema.org',
   '@graph': [
     {
@@ -39,10 +42,10 @@ const orgSchema = {
       name: 'NOUFON',
       url: SITE.url,
       logo: `${SITE.url}/logo.png`,
-      email: SITE.email,
+      email: site.email,
       description:
         'Sistema de fundas magnéticas con forro Faraday para crear espacios libres de celulares.',
-      sameAs: [SITE.instagram, SITE.linkedin],
+      sameAs: [site.instagram, site.linkedin],
     },
     {
       '@type': 'Product',
@@ -63,7 +66,8 @@ const orgSchema = {
       publisher: { '@id': `${SITE.url}/#organization` },
     },
   ],
-};
+  };
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -103,7 +107,7 @@ fbq('track', 'PageView');`}
         </Script>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(construirOrgSchema()) }}
         />
       </head>
       <body>
@@ -117,7 +121,7 @@ fbq('track', 'PageView');`}
           />
         </noscript>
         <GsapEffects />
-        <Header />
+        <Header verticales={getVerticalesNav()} />
         {children}
         <Footer />
         <WhatsAppFloat />

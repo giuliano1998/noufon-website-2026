@@ -15,5 +15,9 @@
 /noufon-vs-yondr.html                                    /noufon-vs-yondr                                     301
 /politica-de-privacidad.html                             /politica-de-privacidad                              301
 
+# ── Panel de contenido ──
+# Regla explícita para que el comodín de abajo nunca se lo coma.
+/admin    /admin/index.html    200
+
 # ── 404 fallback ──
 /*    /404.html    404

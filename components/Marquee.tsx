@@ -1,5 +1,5 @@
 import { Icon } from '@/components/Icons';
-import type { IconName } from '@/data/verticales';
+import type { IconName } from '@/lib/types';
 
 export interface MarqueeEntry {
   text: string;

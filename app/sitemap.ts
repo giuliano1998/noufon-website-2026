@@ -1,11 +1,12 @@
 import type { MetadataRoute } from 'next';
-import { verticales } from '@/data/verticales';
+import { getAllVerticales, getPostsMarkdown } from '@/lib/content';
 import { SITE } from '@/lib/site';
 
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const verticales = getAllVerticales();
 
   const nextRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE.url}/`, lastModified: now, changeFrequency: 'monthly', priority: 1 },
@@ -18,14 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${SITE.url}/leyes-celulares-argentina/`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE.url}/blog/`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    ...[
-      'eventos-sin-celulares',
-      'celulares-examenes-internacionales',
-      'teatro-sin-celulares',
-      'confidencialidad-reuniones-directorio',
-      'celulares-embajadas-diplomacia',
-    ].map((slug) => ({
-      url: `${SITE.url}/blog/${slug}/`,
+    ...getPostsMarkdown().map((p) => ({
+      url: `${SITE.url}${p.href}`,
       lastModified: now,
       changeFrequency: 'monthly' as const,
       priority: 0.7,

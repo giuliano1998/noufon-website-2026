@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { getAllVerticales } from '@/data/verticales';
-import { SITE } from '@/lib/site';
+import { getAllVerticales, getSite } from '@/lib/content';
 
 export default function Footer() {
   const verticales = getAllVerticales();
+  const site = getSite();
+
   return (
     <footer className="site-footer">
       <div className="container">
@@ -12,7 +13,7 @@ export default function Footer() {
             <Link href="/" className="logo">
               NOUFON<span style={{ color: 'var(--teal)' }}>.</span>
             </Link>
-            <p className="footer-tag">{SITE.tagline} Conectando con el ahora.</p>
+            <p className="footer-tag">{site.tagline} Conectando con el ahora.</p>
           </div>
 
           <div className="footer-col">
@@ -20,7 +21,7 @@ export default function Footer() {
             <ul>
               {verticales.map((v) => (
                 <li key={v.slug}>
-                  <Link href={`/${v.slug}/`}>{v.copy.nav}</Link>
+                  <Link href={`/${v.slug}/`}>{v.nav}</Link>
                 </li>
               ))}
               <li>
@@ -44,9 +45,9 @@ export default function Footer() {
             <h4>Contacto</h4>
             <ul>
               <li><Link href="/contacto/">Formulario de contacto</Link></li>
-              <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
-              <li><a href={SITE.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+              <li><a href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               <li><a href="/politica-de-privacidad.html">Política de privacidad</a></li>
             </ul>
           </div>

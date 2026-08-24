@@ -1,0 +1,298 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# NOUFON — Configuración del panel de contenido (Decap CMS)
+#
+# SEGURIDAD: este archivo es público (cualquiera puede leerlo) y NO contiene
+# secretos. Solo describe qué campos se pueden editar. El permiso real para
+# guardar lo da GitHub: sin acceso de escritura al repositorio, el panel no
+# puede modificar nada.
+# ─────────────────────────────────────────────────────────────────────────────
+
+backend:
+  name: github
+  repo: giuliano1998/noufon-website-2026
+  branch: main
+  commit_messages:
+    create: 'Contenido: nueva {{collection}} “{{slug}}” (desde el panel)'
+    update: 'Contenido: actualiza {{collection}} “{{slug}}” (desde el panel)'
+    delete: 'Contenido: elimina {{collection}} “{{slug}}” (desde el panel)'
+    uploadMedia: 'Contenido: sube “{{path}}” (desde el panel)'
+    deleteMedia: 'Contenido: elimina “{{path}}” (desde el panel)'
+
+# Permite probar el panel en local con: npx decap-server
+local_backend: true
+
+locale: es
+
+# Dónde se guardan las imágenes que subís desde el panel.
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  # ══════════════════════════════════════════════════════════════════════════
+  # 1. PÁGINA DE INICIO
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: home
+    label: Inicio
+    files:
+      - name: home
+        label: Textos de la portada
+        file: content/home.json
+        description: Todo lo que se ve en la página principal.
+        fields:
+          - { name: heroKicker, label: 'Portada · Etiqueta superior', widget: string }
+          - { name: heroTituloA, label: 'Portada · Título (primera parte)', widget: string }
+          - { name: heroTituloDestacado, label: 'Portada · Título (parte en verde)', widget: string }
+          - { name: heroSubtitulo, label: 'Portada · Subtítulo', widget: text }
+          - { name: heroCtaPrimario, label: 'Portada · Botón principal', widget: string }
+          - { name: heroCtaSecundario, label: 'Portada · Botón secundario', widget: string }
+
+          - name: marquee
+            label: 'Cinta deslizante (atributos del producto)'
+            widget: list
+            label_singular: ítem
+            summary: '{{fields.texto}}'
+            fields:
+              - { name: texto, label: Texto, widget: string }
+              - name: icono
+                label: Ícono
+                widget: select
+                options:
+                  [signalOff, lock, shield, users, globe, hand, spark, focus,
+                   clock, fileCheck, badge, heart, mic, mask, scale, building,
+                   briefcase, teacher, eye, moon, doc, gavel]
+
+          - { name: tesisKicker, label: 'Tesis · Etiqueta', widget: string }
+          - { name: tesisTitulo, label: 'Tesis · Título', widget: string }
+          - { name: tesisParrafo1, label: 'Tesis · Primer párrafo', widget: text }
+          - { name: tesisParrafo2, label: 'Tesis · Segundo párrafo', widget: text }
+
+          - { name: videoKicker, label: 'Video · Etiqueta', widget: string }
+          - { name: videoTitulo, label: 'Video · Título', widget: string }
+          - name: videoUrl
+            label: 'Video · Enlace para insertar (formato embed de YouTube)'
+            widget: string
+            hint: 'Ejemplo: https://www.youtube.com/embed/CODIGO — no pegues el enlace normal de YouTube.'
+            pattern: ['^https://www\.youtube\.com/embed/.+', 'Tiene que ser un enlace /embed/ de YouTube']
+          - { name: videoCta, label: 'Video · Texto del botón', widget: string }
+
+          - { name: verticalesKicker, label: 'Espacios · Etiqueta', widget: string }
+          - { name: verticalesTitulo, label: 'Espacios · Título', widget: string }
+
+          - { name: comoFuncionaKicker, label: 'Cómo funciona · Etiqueta', widget: string }
+          - { name: comoFuncionaTitulo, label: 'Cómo funciona · Título', widget: string }
+          - { name: comoFuncionaBajada, label: 'Cómo funciona · Bajada', widget: text }
+          - name: pasos
+            label: 'Cómo funciona · Pasos'
+            widget: list
+            label_singular: paso
+            summary: '{{fields.titulo}}'
+            fields:
+              - { name: titulo, label: Título del paso, widget: string }
+              - { name: texto, label: Descripción, widget: text }
+
+          - name: stats
+            label: Cifras destacadas
+            widget: list
+            label_singular: cifra
+            summary: '{{fields.numero}} — {{fields.texto}}'
+            fields:
+              - { name: numero, label: 'Número (ej. 84%)', widget: string }
+              - { name: texto, label: Descripción, widget: text }
+
+          - { name: comparativaKicker, label: 'Antes/Después · Etiqueta', widget: string }
+          - { name: comparativaTitulo, label: 'Antes/Después · Título', widget: string }
+          - { name: comparativaBajada, label: 'Antes/Después · Bajada', widget: text }
+          - { name: comparativaAntes, label: 'Antes/Después · Imagen "antes"', widget: image }
+          - { name: comparativaDespues, label: 'Antes/Después · Imagen "después"', widget: image }
+
+          - { name: blogKicker, label: 'Blog · Etiqueta', widget: string }
+          - { name: blogTitulo, label: 'Blog · Título', widget: string }
+
+          - { name: ctaKicker, label: 'Cierre · Etiqueta', widget: string }
+          - { name: ctaTitulo, label: 'Cierre · Título', widget: string }
+          - { name: ctaBajada, label: 'Cierre · Texto', widget: text }
+          - { name: ctaPrimario, label: 'Cierre · Botón principal', widget: string }
+          - { name: ctaSecundario, label: 'Cierre · Botón secundario', widget: string }
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # 2. SOLUCIONES (una por espacio)
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: verticales
+    label: Soluciones
+    label_singular: Solución
+    folder: content/verticales
+    extension: json
+    format: json
+    create: true
+    slug: '{{fields.slug}}'
+    identifier_field: nav
+    summary: '{{nav}} — {{valueProp}}'
+    description: >-
+      Cada solución es una página propia (por ejemplo /colegios). Si creás una
+      nueva, el "identificador" define la dirección web y aparece sola en el
+      menú y en el pie de página.
+    fields:
+      - name: slug
+        label: 'Identificador (dirección web)'
+        widget: string
+        hint: 'Solo minúsculas y guiones. Ejemplo: hospitales → noufon.com/hospitales'
+        pattern: ['^[a-z0-9-]+$', 'Solo minúsculas, números y guiones']
+      - { name: orden, label: Orden en el menú, widget: number, value_type: int, default: 99 }
+      - { name: nav, label: 'Nombre corto (menú)', widget: string }
+      - { name: h1, label: 'Título principal de la página', widget: string }
+      - { name: kicker, label: 'Etiqueta sobre el título', widget: string }
+      - { name: valueProp, label: 'Frase de valor (una línea)', widget: string }
+
+      - { name: heroImage, label: Imagen de portada, widget: image }
+      - { name: heroVideo, label: Video de portada (opcional), widget: string, required: false }
+      - name: demoVideo
+        label: Video demo vertical (opcional)
+        widget: string
+        required: false
+        hint: 'Enlace /embed/ de YouTube. Si lo dejás vacío no se muestra la sección.'
+
+      - name: galeria
+        label: Galería de fotos
+        widget: list
+        label_singular: foto
+        required: false
+        fields:
+          - { name: src, label: Imagen, widget: image }
+
+      - { name: ctaLabel, label: 'Botón principal', widget: string }
+      - { name: ctaSecundario, label: 'Botón secundario', widget: string }
+
+      - { name: problemaTitulo, label: 'El problema · Título', widget: string }
+      - { name: problema, label: 'El problema · Texto', widget: text }
+
+      - name: beneficios
+        label: 'Lo que cambia (4 beneficios)'
+        widget: list
+        label_singular: beneficio
+        summary: '{{fields.titulo}}'
+        min: 4
+        max: 4
+        fields:
+          - name: icon
+            label: Ícono
+            widget: select
+            options:
+              [focus, users, teacher, shield, spark, eye, lock, clock,
+               fileCheck, globe, hand, badge, mask, moon, mic, scale, gavel,
+               briefcase, signalOff, doc, heart, building]
+          - { name: titulo, label: Título, widget: string }
+          - { name: texto, label: Descripción, widget: text }
+
+      - name: comoFunciona
+        label: 'Cómo funciona (3 pasos)'
+        widget: list
+        label_singular: paso
+        summary: '{{fields.titulo}}'
+        fields:
+          - { name: titulo, label: Título del paso, widget: string }
+          - { name: texto, label: Descripción, widget: text }
+
+      - name: testimonial
+        label: Testimonio (opcional)
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { name: quote, label: Frase, widget: text, required: false }
+          - { name: autor, label: Autor, widget: string, required: false }
+          - { name: rol, label: Cargo o contexto, widget: string, required: false }
+
+      - name: faqs
+        label: Preguntas frecuentes
+        widget: list
+        label_singular: pregunta
+        required: false
+        summary: '{{fields.q}}'
+        fields:
+          - { name: q, label: Pregunta, widget: string }
+          - { name: a, label: Respuesta, widget: text }
+
+      - name: seo
+        label: SEO (Google)
+        widget: object
+        collapsed: true
+        fields:
+          - name: title
+            label: Título en Google
+            widget: string
+            hint: 'Ideal hasta 60 caracteres.'
+          - name: description
+            label: Descripción en Google
+            widget: text
+            hint: 'Ideal hasta 160 caracteres.'
+          - { name: keywords, label: Palabras clave, widget: list, required: false }
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # 3. BLOG
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: blog
+    label: Blog
+    label_singular: Nota
+    folder: content/blog
+    extension: md
+    format: frontmatter
+    create: true
+    slug: '{{slug}}'
+    identifier_field: titulo
+    summary: '{{titulo}}'
+    description: >-
+      Notas del blog. Al crear una nota nueva se publica sola en
+      noufon.com/blog/… y aparece en el listado y en el mapa del sitio.
+    sortable_fields: [fecha, titulo]
+    fields:
+      - { name: titulo, label: Título, widget: string }
+      - name: bajada
+        label: Bajada
+        widget: text
+        hint: 'Resumen de 1–2 líneas. Se usa también como descripción en Google.'
+      - name: tag
+        label: Categoría
+        widget: select
+        options: [Colegios, Eventos, Exámenes, Teatros, Corporativo, Embajadas,
+                  Legislación, Investigación, Prensa, Comparativa]
+      - { name: imagen, label: Imagen destacada, widget: image }
+      - { name: fecha, label: Fecha, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false }
+      - name: vertical
+        label: Solución relacionada
+        widget: select
+        hint: 'Define a qué página lleva el botón del final de la nota.'
+        options:
+          - { label: Colegios, value: colegios }
+          - { label: Eventos, value: eventos }
+          - { label: Exámenes internacionales, value: examenes-internacionales }
+          - { label: Teatros, value: teatros }
+          - { label: Corporativo, value: corporativo }
+          - { label: Embajadas, value: embajadas }
+      - { name: ctaLabel, label: Texto del botón final, widget: string }
+      - name: body
+        label: Contenido de la nota
+        widget: markdown
+        hint: 'Usá “Título 2” para los subtítulos de la nota.'
+
+  # ══════════════════════════════════════════════════════════════════════════
+  # 4. AJUSTES GENERALES
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: ajustes
+    label: Ajustes
+    files:
+      - name: contacto
+        label: Contacto y redes
+        file: content/site.json
+        description: 'Datos que aparecen en el pie de página y en la página de contacto.'
+        fields:
+          - { name: tagline, label: Frase de marca, widget: string }
+          - name: email
+            label: Email de contacto
+            widget: string
+            hint: >-
+              Ojo: esto cambia el email que se MUESTRA en la web. El email al
+              que LLEGAN los formularios se configura aparte, en Netlify.
+            pattern: ['^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$', 'Ingresá un email válido']
+          - { name: whatsapp, label: Enlace de WhatsApp, widget: string }
+          - { name: instagram, label: Enlace de Instagram, widget: string }
+          - { name: linkedin, label: Enlace de LinkedIn, widget: string }

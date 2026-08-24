@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getAllVerticales } from '@/data/verticales';
+import { getAllVerticales } from '@/lib/content';
 import { SITE } from '@/lib/site';
 import CtaLink from '@/components/CtaLink';
 import CalculadoraROI from '@/components/CalculadoraROI';
@@ -48,11 +48,11 @@ export default function Hub() {
           <div className="hub-grid" data-reveal="stagger">
             {verticales.map((v) => (
               <Link href={`/${v.slug}/`} className="hub-card" key={v.slug}>
-                <img src={v.heroImage} alt={v.copy.h1} loading="lazy" />
+                <img src={v.heroImage} alt={v.h1} loading="lazy" />
                 <div className="hub-card-body">
-                  <span className="vcar-kicker">{v.copy.kicker}</span>
-                  <span className="vcar-title">{v.copy.nav}</span>
-                  <p className="vcar-vp">{v.copy.valueProp}</p>
+                  <span className="vcar-kicker">{v.kicker}</span>
+                  <span className="vcar-title">{v.nav}</span>
+                  <p className="vcar-vp">{v.valueProp}</p>
                   <span className="vcar-arrow">Conocer más →</span>
                 </div>
               </Link>

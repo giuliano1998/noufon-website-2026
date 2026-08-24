@@ -1,0 +1,78 @@
+{
+  "heroKicker": "Sistema de fundas magnéticas con bloqueo de señal",
+  "heroTituloA": "Creamos espacios",
+  "heroTituloDestacado": "libres de celulares",
+  "heroSubtitulo": "Aulas, salas y escenarios donde la atención vuelve sola. Cada persona conserva su teléfono — bloqueado, no confiscado.",
+  "heroCtaPrimario": "Ver los espacios",
+  "heroCtaSecundario": "Quiero NOUFON",
+
+  "marquee": [
+    { "texto": "Tecnología Faraday", "icono": "signalOff" },
+    { "texto": "Cierre Magnético", "icono": "lock" },
+    { "texto": "Respaldado por la evidencia UNESCO", "icono": "globe" },
+    { "texto": "Tela de Neopreno", "icono": "shield" },
+    { "texto": "Encuentros Presentes", "icono": "users" },
+    { "texto": "Sin confiscación: el dispositivo nunca cambia de manos", "icono": "hand" }
+  ],
+
+  "tesisKicker": "La tesis NOUFON",
+  "tesisTitulo": "No es un problema de disciplina ni de reglas. Es estructural.",
+  "tesisParrafo1": "Pedirle a una persona que ignore su celular es pedirle que le gane a un diseño hecho para capturarla. Las reglas dependen de la voluntad; la vigilancia genera conflicto. Ninguna de las dos escala.",
+  "tesisParrafo2": "NOUFON cambia la estructura del espacio: una funda magnética con forro Faraday bloquea toda señal mientras cada persona conserva su dispositivo. Sin custodia, sin apps, sin negociación. La atención vuelve sola.",
+
+  "videoKicker": "Conocé cómo funciona",
+  "videoTitulo": "NOUFON en acción",
+  "videoUrl": "https://www.youtube.com/embed/BU4OpfYtV3k",
+  "videoCta": "Quiero NOUFON",
+
+  "verticalesKicker": "Espacios",
+  "verticalesTitulo": "Un sistema. Seis espacios donde cambia todo.",
+
+  "comoFuncionaKicker": "Cómo funciona",
+  "comoFuncionaTitulo": "Un mecanismo simple. Una transformación profunda.",
+  "comoFuncionaBajada": "Sin apps, sin infraestructura, sin capacitación. El sistema es físico y funciona desde el primer día.",
+  "pasos": [
+    {
+      "titulo": "El celular entra en la funda",
+      "texto": "Al ingresar al espacio, cada persona desliza su teléfono en una funda NOUFON y la conserva consigo. Tarda segundos."
+    },
+    {
+      "titulo": "El forro Faraday corta toda señal",
+      "texto": "WiFi, Bluetooth y datos quedan bloqueados. El dispositivo está presente pero inerte: no vibra, no suena, no tienta."
+    },
+    {
+      "titulo": "A la salida, se libera",
+      "texto": "Las estaciones de desbloqueo magnético abren la funda al instante. Sin filas, sin depósitos, sin reclamos."
+    }
+  ],
+
+  "stats": [
+    {
+      "numero": "84%",
+      "texto": "más participación estudiantil en colegios que implementaron NOUFON"
+    },
+    {
+      "numero": "72%",
+      "texto": "en la mejora de experiencias por mayor atención de los participantes"
+    },
+    {
+      "numero": "68%",
+      "texto": "de aumento en la confidencialidad de los proyectos"
+    }
+  ],
+
+  "comparativaKicker": "El cambio, a la vista",
+  "comparativaTitulo": "El mismo espacio. Otra atención.",
+  "comparativaBajada": "Deslizá para comparar un aula con celulares y la misma aula con NOUFON.",
+  "comparativaAntes": "/assets/verticales/aula-antes.jpg",
+  "comparativaDespues": "/assets/verticales/aula-despues.jpg",
+
+  "blogKicker": "Blog",
+  "blogTitulo": "Investigación y novedades.",
+
+  "ctaKicker": "Empezá hoy",
+  "ctaTitulo": "Tu espacio puede estar libre de celulares en semanas.",
+  "ctaBajada": "Contanos qué espacio querés transformar y te respondemos en menos de 24 horas hábiles — sin compromiso, con información concreta.",
+  "ctaPrimario": "Solicitar información",
+  "ctaSecundario": "Pedí un piloto"
+}

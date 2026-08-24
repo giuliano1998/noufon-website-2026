@@ -1,0 +1,89 @@
+{
+  "slug": "eventos",
+  "orden": 1,
+  "heroImage": "/assets/verticales/eventos-hero.jpg",
+  "heroVideo": "",
+  "demoVideo": "",
+  "galeria": [
+    {
+      "src": "/assets/verticales/eventos-casamiento.jpg"
+    },
+    {
+      "src": "/assets/verticales/eventos-cumple.jpg"
+    },
+    {
+      "src": "/assets/verticales/eventos-concierto.jpg"
+    },
+    {
+      "src": "/assets/verticales/eventos-hero.jpg"
+    }
+  ],
+  "nav": "Eventos",
+  "h1": "EVENTOS Y CONCIERTOS",
+  "kicker": "Música y eventos en vivo",
+  "valueProp": "Que la gente viva el momento, no lo grabe.",
+  "ctaLabel": "Hacé tu evento libre de celulares",
+  "ctaSecundario": "Pedí un piloto",
+  "problemaTitulo": "Un mar de pantallas entre el artista y su público.",
+  "problema": "El show sucede una sola vez, y la mitad de la sala lo mira a través de un celular. Las pantallas levantadas rompen la conexión con el escenario, las filtraciones arruinan estrenos y sorpresas, y la experiencia colectiva — esa por la que la gente pagó una entrada — se diluye en miles de grabaciones verticales que nadie va a volver a ver.",
+  "beneficios": [
+    {
+      "icon": "heart",
+      "titulo": "Presencia total del público",
+      "texto": "Sin pantallas en alto, la energía vuelve a la sala. El público canta, baila y mira el escenario — no una previsualización de cámara."
+    },
+    {
+      "icon": "spark",
+      "titulo": "Una experiencia irrepetible",
+      "texto": "Lo que pasa en el show queda en el show. La exclusividad de la experiencia en vivo se convierte en el mejor argumento de venta de la próxima fecha."
+    },
+    {
+      "icon": "lock",
+      "titulo": "El contenido del artista, protegido",
+      "texto": "Sin grabaciones no autorizadas ni spoilers: estrenos, bises y momentos especiales no se filtran a redes antes de tiempo."
+    },
+    {
+      "icon": "shield",
+      "titulo": "Más seguridad, menos distracción",
+      "texto": "Un público presente es un público más atento a su entorno. Menos incidentes, menos fricción con seguridad, mejor experiencia para todos."
+    }
+  ],
+  "comoFunciona": [
+    {
+      "titulo": "En el acceso",
+      "texto": "Cada asistente coloca su celular en una funda NOUFON al ingresar. Tarda segundos y el teléfono nunca cambia de manos."
+    },
+    {
+      "titulo": "Durante el show",
+      "texto": "El forro Faraday bloquea señal y la funda magnética permanece cerrada. El público conserva su dispositivo, sin poder usarlo."
+    },
+    {
+      "titulo": "A la salida",
+      "texto": "Estaciones de desbloqueo en los accesos liberan la funda al instante. Sin filas de retiro ni custodia de objetos."
+    }
+  ],
+  "testimonial": null,
+  "faqs": [
+    {
+      "q": "¿Y si alguien necesita usar su teléfono durante el evento?",
+      "a": "Se definen zonas de uso (foyer, barras o accesos) con estaciones de desbloqueo. Cualquier asistente puede salir, desbloquear su funda, usar el teléfono y volver a entrar."
+    },
+    {
+      "q": "¿Cuánto demora el ingreso?",
+      "a": "El enfundado tarda menos que un control de tickets: el asistente guarda su propio teléfono y sigue caminando. No hay registro ni depósito."
+    },
+    {
+      "q": "¿Funciona para eventos de cualquier tamaño?",
+      "a": "Sí. El sistema escala desde eventos privados de 50 personas hasta conciertos. Cotizamos por volumen y duración."
+    }
+  ],
+  "seo": {
+    "title": "Eventos y conciertos libres de celulares | NOUFON",
+    "description": "Fundas magnéticas con bloqueo de señal para shows en vivo: público presente, contenido protegido y una experiencia que solo pasa ahí.",
+    "keywords": [
+      "eventos sin celulares",
+      "conciertos sin celulares",
+      "fundas para eventos"
+    ]
+  }
+}

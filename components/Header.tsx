@@ -2,9 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { getAllVerticales } from '@/data/verticales';
 import { Icon } from '@/components/Icons';
-import type { IconName } from '@/data/verticales';
+import type { IconName, VerticalNav } from '@/lib/types';
+
+/*
+ * Componente CLIENTE: no puede leer archivos del disco.
+ * Recibe las verticales por props desde app/layout.tsx (componente de servidor).
+ */
 
 const navIcons: Record<string, IconName> = {
   colegios: 'teacher',
@@ -15,12 +19,11 @@ const navIcons: Record<string, IconName> = {
   embajadas: 'building',
 };
 
-export default function Header() {
+export default function Header({ verticales }: { verticales: VerticalNav[] }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
   const dropRef = useRef<HTMLDivElement>(null);
-  const verticales = getAllVerticales();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -65,7 +68,7 @@ export default function Header() {
               {verticales.map((v) => (
                 <Link key={v.slug} href={`/${v.slug}/`} onClick={closeAll} role="menuitem">
                   <Icon name={navIcons[v.slug] ?? 'focus'} size={19} />
-                  {v.copy.nav}
+                  {v.nav}
                 </Link>
               ))}
               <div className="drop-all">
