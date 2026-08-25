@@ -23,6 +23,17 @@ local_backend: true
 
 locale: es
 
+# ── Generación de direcciones (slugs) ────────────────────────────────────────
+# CRÍTICO: sin esto, un título con tildes genera un archivo con tildes y la
+# página resultante devuelve 404 en Netlify (el navegador pide la URL
+# codificada —"lecci%C3%B3n"— y no coincide con el archivo en disco).
+#   clean_accents  → convierte é→e, í→i, ñ→n
+#   encoding ascii → descarta cualquier carácter no ASCII que quede
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+  sanitize_replacement: '-'
+
 # Dónde se guardan las imágenes que subís desde el panel.
 media_folder: public/uploads
 public_folder: /uploads
@@ -180,7 +191,13 @@ collections:
               [focus, users, teacher, shield, spark, eye, lock, clock,
                fileCheck, globe, hand, badge, mask, moon, mic, scale, gavel,
                briefcase, signalOff, doc, heart, building]
-          - { name: titulo, label: Título, widget: string }
+          - name: titulo
+        label: Título
+        widget: string
+        hint: >-
+          Es el titular que se ve en la nota. No le agregues "| NOUFON" ni el
+          año: el sitio ya lo suma solo en el título que muestra Google.
+          Cuanto más corto, mejor queda la dirección web.
           - { name: texto, label: Descripción, widget: text }
 
       - name: comoFunciona
@@ -245,7 +262,13 @@ collections:
       noufon.com/blog/… y aparece en el listado y en el mapa del sitio.
     sortable_fields: [fecha, titulo]
     fields:
-      - { name: titulo, label: Título, widget: string }
+      - name: titulo
+        label: Título
+        widget: string
+        hint: >-
+          Es el titular que se ve en la nota. No le agregues "| NOUFON" ni el
+          año: el sitio ya lo suma solo en el título que muestra Google.
+          Cuanto más corto, mejor queda la dirección web.
       - name: bajada
         label: Bajada
         widget: text

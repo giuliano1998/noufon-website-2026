@@ -218,6 +218,13 @@ históricas: en dev hay que enlazarlas con `.html`.
 Objetos, no strings, porque lo requiere el widget `list` de Decap.
 `lib/content.ts` la aplana a strings para el sitio.
 
+### ❌ 8. Los slugs NO pueden tener tildes ni eñes
+Un título con tildes generaba un archivo con tildes (`...la-lección-de-límites...`)
+y **la nota aparecía en el listado pero su página daba 404**: el navegador pide
+la URL codificada (`lecci%C3%B3n`) y Netlify no la hace coincidir con el archivo.
+Corregido en `public/admin/config.yml` con `slug: {encoding: ascii,
+clean_accents: true}`. Si se crea otra colección, verificar que herede esa config.
+
 ### ❌ 7. No correr `git push` en la ventana donde corre `npm run dev`
 Esa terminal está ocupada por el servidor. Abrir una pestaña nueva.
 
