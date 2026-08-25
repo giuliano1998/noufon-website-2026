@@ -1,6 +1,6 @@
 ---
 titulo: "Le ofrecieron US$25.000 por una historia: la lección de límites que le
-  falta al celular en el aula | NOUFON 2026"
+  falta al celular en el aula "
 bajada: Belu Lucius rechazó ofertas de hasta US$25.000 por publicitar casas de
   apuestas. Por qué su lógica de "no absoluto" es la misma que necesitan los
   colegios para el celular en el aula.
