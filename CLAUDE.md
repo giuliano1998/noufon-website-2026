@@ -1,811 +1,282 @@
-# 🏗️ CLAUDE.md — NOUFON Website 2026
+# 🏗️ CLAUDE.md — NOUFON Website
 
-## ⚠️ INSTRUCCIONES CRÍTICAS PARA CLAUDE CODE
-
-Este archivo define CÓMO DEBE FUNCIONAR. **LEE ESTO PRIMERO**:
-
-### 🎯 REGLA #1: LECTURA ÚNICA (Ahorra tokens)
-- **LÉEME UNA SOLA VEZ** al inicio de cada sesión
-- NO releer en cada acción (eso consume tokens innecesarios)
-- Una vez leído, **MEMORIZA** el contenido usando tu memoria interna
-- Aplica las instrucciones automáticamente sin volver a consultar este archivo
-
-### 🎯 REGLA #2: MEMORIZAR ERRORES (Para no repetirlos)
-- Mientras trabajas, si cometes un error → **MEMORÍZALO**
-- Documenta en tu memoria interna: "En la sesión X cometí error Y"
-- Los 5 errores comunes listados abajo deben estar en tu memoria PERMANENTEMENTE
-- Antes de cada acción, verifica mentalmente: "¿He cometido este error antes?"
-
-### 🎯 REGLA #3: REPORTE DIARIO (Es OBLIGATORIO)
-- Al finalizar CADA sesión de desarrollo:
-  1. Ejecuta: `./generate-report.sh` (esto crea REPORT-YYYY-MM-DD.txt)
-  2. Edita el archivo con TODOS los detalles:
-     - Qué cambios hiciste
-     - Qué errores encontraste y corregiste
-     - Qué fue testeado (desktop, tablet, mobile)
-     - Cuánto tiempo dedicaste
-     - Qué está pendiente
-  3. Haz: `git add REPORT-YYYY-MM-DD.txt && git commit && git push`
-  4. **SIN REPORTE = NO HUBO SESIÓN**
-
-### 🎯 REGLA #4: MEMORIA INTERNA (Usa la tuya, no releas archivos)
-- Usa tu sistema de memoria para guardar:
-  - Errores cometidos en sesiones anteriores
-  - Soluciones que funcionaron
-  - Estructura del proyecto (no cambiar)
-  - Stack técnico (fijo)
-- Cuando Giuliano te diga: "¿Recuerdas el error X?" → responde desde memoria
-- NO digas "déjame releer CLAUDE.md" - ya lo leíste una vez
+> **Reescrito el 2026-08-24.** La versión anterior describía el sitio viejo
+> (HTML vanilla, Brevo, rutas de `~/Desktop/noufon-web`) y generaba contexto
+> contradictorio. Ese contenido quedó en el historial de Git.
 
 ---
 
-> **INSTRUCCIÓN CRÍTICA ORIGINAL**: Este archivo debe ser **LEÍDO UNA SOLA VEZ** al inicio de cada sesión de desarrollo. No volver a leerlo a menos que se haya modificado explícitamente.
+## ⚠️ CÓMO TRABAJAR (leer primero)
+
+### 🎯 REGLA #1: LECTURA ÚNICA
+Leé este archivo **una sola vez** al inicio de la sesión y memorizá su
+contenido. No lo releas en cada acción: consume tokens al pedo.
+
+### 🎯 REGLA #2: MEMORIZAR ERRORES
+Los errores de la sección **"Trampas conocidas"** ya se cometieron una vez.
+Antes de cada acción, verificá mentalmente que no estés por repetir uno.
+Si cometés uno nuevo, documentalo ahí mismo para que no vuelva a pasar.
+
+### 🎯 REGLA #3: REPORTE AL CIERRE
+Cada sesión termina con un `REPORT-YYYY-MM-DD.txt`. Ejecutá
+`./generate-report.sh` para generar la plantilla, completala con lo que
+realmente pasó (cambios, errores, testing, pendientes) y commiteala.
+**Sin reporte = no hubo sesión.**
+
+### 🎯 REGLA #4: EL PUSH ES DE GIULIANO
+Claude **no tiene credenciales de GitHub**. Puede editar, compilar y
+commitear, pero el `git push origin main` lo corre Giuliano en su Terminal.
+Cuando algo "no se ve en la web", **lo primero que hay que revisar es si el
+commit se subió**:
 
----
-
-## 📋 IDENTIDAD DEL PROYECTO
-
-**Nombre**: Noufon Website 2026  
-**Tipo**: E-commerce / Landing page estática (vanilla HTML/CSS/JS)  
-**Objetivo**: Sistema de fundas magnéticas para evitar uso de celulares en colegios secundarios de Argentina.  
-**Repositorio**: `giuliano1998/noufon-web` (GitHub)  
-**Hosting**: Netlify (`polite-faun-a9dba1`) — Conectado cuando web esté lista  
-**Propietario**: Giuliano Rascanu & Ignacio (co-founders)
-
----
-
-## 🗂️ ESTRUCTURA DEL PROYECTO
-
-```
-~/Desktop/noufon-web/
-├── 404.html
-├── index.html (HOME - principal)
-├── blog.html
-├── contacto.html
-├── fundas-para-colegios.html
-├── como-implementar-politica-de-celulares-en-escuela.html
-├── ley-15534-celulares-escuela.html
-├── casinos-menores-argentina.html (NUEVA - página SEO)
-├── politica-de-privacidad.html
-├── robots.txt
-├── sitemap.xml
-├── favicon.ico
-├── favicon-wa.svg
-├── /assets/
-│   ├── /images/
-│   │   ├── bilinkis-foto.jpg
-│   │   ├── noufon-colegios-secundarios.jpeg
-│   │   └── (otros assets)
-│   └── /scripts/
-│       └── main.js (si aplica)
-└── README.md
-
-```
-
-**IMPORTANTE**: Mantener la estructura exacta. Paths relativos deben funcionar correctamente.
-
----
-
-## 🎨 SISTEMA DE DISEÑO
-
-### Paleta de Colores (CSS Variables)
-```css
---teal: #2DD4BF          /* Color primario */
---dark: #0F2D3D          /* Background oscuro */
---white: #FFFFFF         /* Texto principal */
---text: #1a1a1a          /* Texto neutral */
---gray: #f5f5f5          /* Fondo gris claro */
---gray-mid: #e0e0e0      /* Gris medio */
---font: 'Montserrat', sans-serif
-```
-
-### Breakpoints (Mobile-First)
-- **Mobile**: 0px - 480px
-- **Tablet**: 481px - 768px
-- **Desktop**: 769px+
-
-### Tipografía
-- **Font Family**: Montserrat (via Google Fonts)
-- **Pesos**: 400, 500, 600, 700, 800, 900
-- **Mobile-First**: Comenzar estilos en mobile, luego usar `@media (min-width: ...)`
-
----
-
-## ⚙️ STACK TÉCNICO
-
-### Frontend
-- **HTML5** (vanilla, sin bundler)
-- **CSS3** (vanilla, sin SCSS/LESS — mantener simple)
-- **JavaScript Vanilla** (ES6+, sin framework)
-- **GSAP 3.x** (Greensock Animation Platform)
-  - **Importación**: CDN (búscar en cualquier HTML para confirmar la URL exacta)
-  - **Animaciones críticas**: Hero section, botones CTA, scroll triggers
-  - **Errores pasados**: GSAP animations no se ejecutan en estáticas — usar `window.addEventListener('DOMContentLoaded', ...)` siempre
-
-### Servicios de Terceros
-- **GTM (Google Tag Manager)**: `GTM-PHK2V9FW`
-  - Script debe estar en `<head>` de TODOS los HTML
-  - Noscript fallback en `<body>` justo después de `<body>`
-- **Google Analytics 4**: Integrado via GTM
-- **Google Search Console**: Pendiente configuración
-- **Brevo (Email Marketing + CRM)**:
-  - Formulario de contacto debe conectarse via API/Webhook
-  - Mapeo de campos exacto (ver sección BREVO)
-- **Netlify**: Deploy automático desde Git (cuando esté lista la web)
-
----
-
-## 📧 INTEGRACIÓN FORMULARIOS (EMAIL - NO BREVO)
-
-### Cómo Funciona
-Los formularios **NO envían a Brevo**. Envían EMAIL directamente a `info@noufon.com`:
-
-```
-Usuario llena formulario
-    ↓
-Netlify Function recibe datos
-    ↓
-Función envía EMAIL a info@noufon.com
-    ↓
-Usuario recibe confirmación en su email
-    ↓
-TÚ responde manualmente
-```
-
-### Campos del Formulario (contacto.html)
-```
-nombre           → texto, REQUERIDO
-apellidos        → texto, opcional
-email            → email, REQUERIDO
-colegio          → texto, opcional
-telefono         → tel, opcional
-cargo            → texto, opcional
-mensaje          → textarea, opcional
-```
-
-### Variables SMTP (Netlify Environment)
-```
-SMTP_HOST = smtp.gmail.com
-SMTP_PORT = 465
-SMTP_USER = tu-email@gmail.com
-SMTP_PASSWORD = contraseña-app (NO contraseña normal)
-SMTP_FROM = info@noufon.com
-```
-
-### Arquitectura Backend
-- **Archivo**: `netlify/functions/send-contact-email.js`
-- **Dependencia**: `npm install nodemailer`
-- **Acción**: Recibe POST, valida, envía EMAIL a info@noufon.com
-- **Confirmación**: Usuario recibe EMAIL de confirmación en su email
-
-### Email que recibe TÚ
-Asunto: `Nuevo contacto: [Nombre del usuario]`
-
-Contenido:
-```
-Nuevo contacto desde formulario Noufon
-
-Datos del contacto:
-Nombre: [nombre]
-Apellidos: [apellidos]
-Email: [email]
-Colegio: [colegio]
-Teléfono: [telefono]
-Cargo: [cargo]
-Mensaje: [mensaje]
-
-─────────────────────────────
-Respondé directamente al email: [email del usuario]
-```
-
-### Validaciones
-- [ ] Email es REQUERIDO y válido (regex)
-- [ ] Nombre es REQUERIDO
-- [ ] HTML sanitizado (no scripts en campos)
-- [ ] Límite de caracteres razonable
-
-### Ventajas de este sistema
-✅ Sin costos (no hay Brevo)  
-✅ Contacto personal (tu responda directamente)  
-✅ Control total (datos en tu email)  
-✅ Escalable (migra a Brevo cuando crezca)  
-✅ Simple (sin CRM complejo)
-
-**REFERENCIA**: Ver **FORMULARIOS_EMAIL_GUIDE.md** para implementación completa
-
----
-
-## 🔍 SEO & METADATA
-
-### Estándares Obligatorios (TODOS los HTML)
-
-#### 1. **Head Meta Tags**
-```html
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Título único - 60 carácteres max | NOUFON</title>
-<meta name="description" content="Descripción única - 160 carácteres max" />
-<meta name="robots" content="index, follow" /> <!-- o noindex si aplica -->
-<link rel="canonical" href="https://noufon.com/page.html" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
-```
-
-#### 2. **Structured Data (schema.org)**
-Todas las páginas deben tener:
-```html
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://noufon.com/page.html#webpage",
-  "url": "https://noufon.com/page.html",
-  "name": "Título de la página",
-  "inLanguage": "es",
-  "isPartOf": { "@id": "https://noufon.com/#website" }
-}
-</script>
-```
-
-La home (`index.html`) adicional debe tener:
-```html
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://noufon.com/#organization",
-  "name": "NOUFON",
-  "url": "https://noufon.com",
-  "logo": "https://noufon.com/logo.svg",
-  "description": "Sistema de fundas magnéticas para evitar uso de celulares en colegios.",
-  "sameAs": [
-    "https://www.instagram.com/_noufon/",
-    "https://www.linkedin.com/company/noufon"
-  ]
-}
-</script>
-```
-
-#### 3. **Open Graph (Redes Sociales)**
-```html
-<meta property="og:title" content="NOUFON - Fundas Magnéticas para Colegios" />
-<meta property="og:description" content="Sistema innovador para evitar el uso de celulares en clase." />
-<meta property="og:image" content="https://noufon.com/og-image.jpg" />
-<meta property="og:url" content="https://noufon.com/page.html" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
-```
-
-#### 4. **Google Tag Manager & Analytics**
-```html
-<!-- HEAD (antes de cierre) -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PHK2V9FW');</script>
-
-<!-- BODY (justo después de apertura) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHK2V9FW"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-```
-
----
-
-## 🐛 ERRORES COMUNES (MEMORIZAR Y NO REPETIR)
-
-⚠️ **IMPORTANTE**: Estos 5 errores DEBEN estar en tu MEMORIA INTERNA.  
-Antes de hacer cualquier acción, verifica: "¿Estoy a punto de cometer uno de estos?"
-
-### ❌ ERROR 1: GSAP Animations No Se Ejecutan
-**Síntoma**: Animaciones no funcionan en produción aunque funcionen localmente.  
-**Causa**: Script GSAP se carga pero no se ejecuta porque el DOM no está listo.  
-**MEMORIZAR**: SIEMPRE envolver GSAP en `DOMContentLoaded` listener.
-
-**Solución**:
-```javascript
-// ✅ CORRECTO - SIEMPRE HACER ESTO
-document.addEventListener('DOMContentLoaded', () => {
-  gsap.to('.hero', { opacity: 1, duration: 1 });
-});
-
-// O usar async + defer en script tag
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script defer src="main.js"></script>
-```
-**Checklist antes de cada animación GSAP**:
-- [ ] ¿Estoy dentro de DOMContentLoaded?
-- [ ] ¿Los elementos existen en HTML?
-- [ ] ¿El script carga DESPUÉS del HTML?
-
----
-
-### ❌ ERROR 2: CSS Conflicts (Cascada)
-**Síntoma**: Estilos de una sección afectan otras secciones inesperadamente.  
-**Causa**: Selectores genéricos sin scope (ej: `button { }` sin clase).  
-**MEMORIZAR**: NUNCA usar selectores genéricos. SIEMPRE usar clases específicas.
-
-**Solución**:
-```css
-/* ❌ INCORRECTO - NUNCA HACER */
-button { background: teal; }
-h1 { color: blue; }
-
-/* ✅ CORRECTO - SIEMPRE HACER ESTO */
-.btn { background: var(--teal); }
-.btn-primary { background: var(--teal); }
-.btn-secondary { background: var(--dark); }
-.hero-title { color: var(--white); }
-```
-**Checklist antes de cada CSS**:
-- [ ] ¿Estoy usando una clase específica?
-- [ ] ¿No estoy usando selectores HTML genéricos?
-- [ ] ¿El scope es correcto y no afecta otras secciones?
-
----
-
-### ❌ ERROR 3: Responsive Roto en Mobile
-**Síntoma**: Layout se rompe en pantallas < 480px.  
-**Causa**: No testear en mobile-first; usar media queries incorrectamente (max-width en vez de min-width).  
-**MEMORIZAR**: SIEMPRE mobile-first. Media queries con `min-width`, NUNCA `max-width`.
-
-**Solución**:
-```css
-/* ✅ CORRECTO - MOBILE FIRST */
-.container { width: 100%; padding: 20px; }  /* Mobile: 0-480px */
-
-@media (min-width: 480px) {
-  .container { padding: 30px; }  /* Tablet small: 480px+ */
-}
-
-@media (min-width: 768px) {
-  .container { width: 90%; padding: 40px; }  /* Tablet: 768px+ */
-}
-
-@media (min-width: 1024px) {
-  .container { width: 80%; }  /* Desktop: 1024px+ */
-}
-```
-**Checklist antes de responsive**:
-- [ ] ¿Empecé con estilos MOBILE?
-- [ ] ¿Uso SOLO min-width en media queries?
-- [ ] ¿Testeé en 320px, 480px, 768px, 1920px?
-
----
-
-### ❌ ERROR 4: Imágenes con Paths Rotos
-**Síntoma**: Imágenes no cargan en producción.  
-**Causa**: Usar paths absolutos (`/assets/...`) en lugar de relativos.  
-**MEMORIZAR**: SIEMPRE paths RELATIVOS. NUNCA paths absolutos que comiencen con `/`.
-
-**Solución**:
-```html
-<!-- ❌ INCORRECTO - NUNCA HACER -->
-<img src="/assets/images/foto.jpg" />
-
-<!-- ✅ CORRECTO - SIEMPRE HACER ESTO -->
-<img src="assets/images/noufon-colegios-secundarios.jpeg" alt="..." />
-
-<!-- En subcarpetas (subir nivel) -->
-<img src="../assets/images/bilinkis-foto.jpg" alt="..." />
-
-<!-- En carpeta profunda -->
-<img src="../../assets/images/foto.jpg" alt="..." />
-```
-**Checklist antes de cada imagen**:
-- [ ] ¿Mi path es RELATIVO (sin / inicial)?
-- [ ] ¿El archivo realmente existe en esa ubicación?
-- [ ] ¿Tengo alt text descriptivo?
-
----
-
-### ❌ ERROR 5: Formulario No Mapea Campos Brevo
-**Síntoma**: Formulario se envía pero no crea contacto en Brevo.  
-**Causa**: Nombres de inputs no coinciden EXACTAMENTE con atributos Brevo (case-sensitive).  
-**MEMORIZAR**: Los nombres DEBEN coincidir EXACTAMENTE. EMAIL ≠ email ≠ Email.
-
-**Campos Brevo (EXACTO - mayúsculas)**:
-- EMAIL
-- NOMBRE
-- APELLIDOS
-- COLEGIO
-- TELEFONO
-- JOB_TITLE
-- LINKEDIN
-
-**Solución**:
-```html
-<!-- ❌ INCORRECTO -->
-<input type="email" name="email" />        <!-- lowercase = MAL -->
-<input type="text" name="Nombre" />        <!-- capital inicial = MAL -->
-<input type="text" name="colegio" />       <!-- lowercase = MAL -->
-
-<!-- ✅ CORRECTO - EXACTO COMO EN BREVO -->
-<input type="email" name="EMAIL" required />
-<input type="text" name="NOMBRE" required />
-<input type="text" name="APELLIDOS" />
-<input type="text" name="COLEGIO" />
-<input type="tel" name="TELEFONO" />
-<input type="text" name="JOB_TITLE" />
-<input type="url" name="LINKEDIN" />
-```
-**Checklist antes de cada formulario**:
-- [ ] ¿Los names coinciden EXACTAMENTE con Brevo?
-- [ ] ¿Están en MAYÚSCULAS?
-- [ ] ¿Validé con la lista de atributos en Brevo?
-
----
-
-## 🧠 CÓMO MEMORIZAR Y NO REPETIR ERRORES
-
-**Sistema de memoria para Claude**:
-1. Después de leer CLAUDE.md la primera vez, memoriza estos 5 errores
-2. Durante sesión, si cometes uno → documenta mentalmente: "ERROR X cometido hoy en acción Y"
-3. Antes de CADA acción futura, pregúntate: "¿Podría estar cometiendo alguno de estos 5 errores?"
-4. Si algo falla, revisa primero esta lista antes de debuggear
-5. Al escribir reportes, documenta: "ERROR X ocurrió. Solución: Y. No volveré a hacer."
-
-**Meta**: Al terminar esta semana, estos 5 errores deben ser IMPOSIBLES de cometer.
-
----
-
-## 🚀 ANIMACIONES GSAP (Mejoras Requeridas)
-
-### Hero Section
-**Actual**: Fade simple.  
-**Requerido**: Animación más llamativa con parallax y gradiente animado.
-```javascript
-// MEJORA REQUERIDA
-gsap.timeline()
-  .from('.hero-title', { opacity: 0, y: 30, duration: 0.8 })
-  .from('.hero-subtitle', { opacity: 0, y: 20, duration: 0.6 }, '-=0.4')
-  .from('.hero-cta', { opacity: 0, y: 20, duration: 0.6 }, '-=0.3');
-
-// Parallax en background
-gsap.to('.hero-bg', {
-  yPercent: 20,
-  scrollTrigger: { trigger: '.hero', start: 'top top', scrub: 1 }
-});
-```
-
-### Botones CTA (Blog)
-**Problema**: Texto no se ve, diseño roto.  
-**Requerido**: Rediseñar con hover state claro.
-```css
-/* CORRECTO */
-.blog-cta {
-  display: inline-block;
-  padding: 12px 24px;
-  background: var(--teal);
-  color: var(--dark);
-  text-decoration: none;
-  font-weight: 700;
-  border-radius: 50px;
-  transition: all 0.3s;
-}
-
-.blog-cta:hover {
-  background: #22b5a3;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(45, 212, 191, 0.3);
-}
-```
-
----
-
-## 📱 WhatsApp Flotante
-
-### Versión 1.0 (Actual - Funcional)
-```html
-<!-- Button simple flotante -->
-<a href="https://wa.me/5491164518851?text=Hola%20NOUFON%2C%20quiero%20info%20sobre%20las%20fundas" 
-   target="_blank" 
-   rel="noopener noreferrer"
-   class="whatsapp-btn"
-   title="Hablamos por WhatsApp">
-  📱 Hablemos por WhatsApp
-</a>
-
-<style>
-  .whatsapp-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    z-index: 99;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-    transition: all 0.3s;
-  }
-  
-  .whatsapp-btn:hover {
-    background: #20ba5a;
-    transform: scale(1.1);
-  }
-  
-  @media (max-width: 480px) {
-    .whatsapp-btn { padding: 10px 16px; font-size: 0.9rem; }
-  }
-</style>
-```
-
-**UPGRADE A CHATBOT**: Será implementado post-lanzamiento usando libería tipo `Tawk.to` o `Zendesk Chat`.
-
----
-
-## 📄 NUEVA PÁGINA: Casinos Ilegales & Menores
-
-**Archivo**: `casinos-menores-argentina.html`  
-**URL**: `https://noufon.com/casinos-menores-argentina.html`  
-**Propósito**: SEO + Lead gen educativo sobre riesgos legales de casinos para menores.
-
-**Estructura**:
-1. Hero con CTA
-2. Secciones informativas (Ley 25.188, riesgos, casos)
-3. Relación con NOUFON (control de celulares = prevención)
-4. CTAs para descargar guía + contacto
-
-**Button en home**: Agregar en sección de Blog o pie de página.
-
----
-
-## 🔄 WORKFLOW DE DESARROLLO
-
-### Sesión Típica (OBLIGATORIO)
-1. **Leer CLAUDE.md** (solo la 1ª vez de la sesión)
-   - No releerlo durante la sesión (ahorra tokens)
-   - Usa memoria interna después de primera lectura
-   
-2. **Revisar cambios pending** (si existen de sesiones anteriores)
-   - Ver REPORT anterior
-   - Verificar items sin completar
-   
-3. **Hacer cambios** en archivos
-   - Siempre mantener estructura exacta
-   - Aplicar reglas de 5 errores comunes
-   - Testear cada cambio ANTES de siguiente
-   
-4. **Testear localmente** después de CADA cambio
-   - Desktop (1920px): ¿Funciona bien?
-   - Tablet (768px): ¿Se ve bien?
-   - Mobile (480px): ¿No se rompe?
-   - Console (F12): ¿Sin errores rojos?
-   - GSAP (si aplica): ¿Anima correctamente?
-   
-5. **Git commit automático** con cada cambio
-   - Usar mensajes descriptivos
-   - No acumular cambios sin commitear
-   
-6. **Generar REPORT.txt OBLIGATORIAMENTE** (Al finalizar sesión)
-   - Ver sección siguiente
-   - SIN EXCEPCIÓN
-
-7. **Finalizar sesión**
-
----
-
-## 📊 REPORTE DIARIO (REPORT-YYYY-MM-DD.txt) — OBLIGATORIO
-
-⚠️ **CRÍTICO**: Cada sesión DEBE terminar con un reporte. SIN REPORTE = SIN SESIÓN.
-
-### Proceso de Reporte (Al finalizar)
-1. Ejecuta: `./generate-report.sh`
-   - Crea automáticamente: REPORT-YYYY-MM-DD.txt
-   - Inserta cambios de Git automáticamente
-   
-2. EDITA el archivo generado MANUALMENTE
-   - Abre: REPORT-YYYY-MM-DD.txt
-   - Completa TODAS las secciones:
-     * Errores encontrados & corregidos HOY
-     * Testing realizado (qué testeaste exactamente)
-     * Tiempo total dedicado
-     * Próximas acciones pendientes
-   
-3. Guarda el archivo editado
-   
-4. Haz commit:
-   ```bash
-   git add REPORT-YYYY-MM-DD.txt
-   git commit -m "Report: Daily build report for $(date +%Y-%m-%d)"
-   git push
-   ```
-
-### Información OBLIGATORIA en cada reporte
-**DEBES incluir**:
-- [ ] Fecha exacta (YYYY-MM-DD)
-- [ ] Hora inicio + hora cierre
-- [ ] Branch (main / develop)
-- [ ] TODOS los archivos modificados (con cambios específicos)
-- [ ] TODOS los errores encontrados Y CÓMO LOS CORREGISTE
-- [ ] Testing realizado: desktop/tablet/mobile/console/GSAP
-- [ ] Commits realizados (auto-generados)
-- [ ] Tiempo total dedicado (en horas/minutos)
-- [ ] Próximas 3 acciones para próxima sesión
-- [ ] Status: "READY FOR REVIEW" o "BLOCKED" (con razón)
-```
-════════════════════════════════════════════════════════════
-  NOUFON BUILD REPORT
-════════════════════════════════════════════════════════════
-
-📅 Fecha: 2026-04-01
-⏰ Hora de inicio: 10:00 AM ART
-⏰ Hora de cierre: 12:30 PM ART
-🌿 Branch: main
-✅ Status: READY FOR REVIEW
-
-────────────────────────────────────────────────────────────
-📝 CAMBIOS REALIZADOS
-────────────────────────────────────────────────────────────
-
-[MODIFICADOS]
-✏️  index.html
-   - Mejorada animación hero section con GSAP parallax
-   - Agregado structured data JSON-LD
-   - Botón WhatsApp flotante implementado
-   
-✏️  contacto.html
-   - Integración Brevo API iniciada
-   - Mapeo campos: EMAIL, NOMBRE, COLEGIO, TELEFONO
-   - Validación client-side agregada
-   
-✏️  blog.html
-   - Rediseñados botones CTA con mejor visibilidad
-   - Fix hover states
-   - Mobile spacing corregido
-
-✏️  css (inline en index.html)
-   - Actualizado --teal color (verificación)
-   - Media queries mobile-first revisadas
-   - Z-index layering optimizado
-
-[CREADOS]
-✨ casinos-menores-argentina.html (NUEVO)
-   - Página SEO sobre casinos ilegales & menores
-   - Hero + 3 secciones informativas
-   - CTA a descarga de guía + contacto
-   - Structured data implementado
-
-[NO MODIFICADOS]
-➖ 404.html
-➖ politica-de-privacidad.html
-➖ robots.txt
-➖ sitemap.xml
-
-────────────────────────────────────────────────────────────
-🐛 ERRORES ENCONTRADOS & CORREGIDOS
-────────────────────────────────────────────────────────────
-
-❌ GSAP animations no ejecutarse en index.html
-✅ FIX: Envuelto en DOMContentLoaded listener
-✅ Verificado en Firefox + Chrome + Safari
-
-❌ Botones blog roto en mobile
-✅ FIX: Padding + font-size ajustado con media query
-✅ Testeo: 320px, 480px, 768px
-
-❌ Formulario Brevo no validaba emails
-✅ FIX: Agregado required + pattern HTML5
-✅ Pendiente: Testing post-integración
-
-────────────────────────────────────────────────────────────
-🔍 TESTING REALIZADO
-────────────────────────────────────────────────────────────
-
-✅ Desktop (1920x1080): OK
-✅ Tablet (768x1024): OK
-✅ Mobile (320x568): OK
-✅ GTM Script: Verificado en head
-✅ Canonical URLs: Correctas
-✅ Imágenes paths: Relativos OK
-✅ GSAP CDN: Cargando correctamente
-⚠️  PENDIENTE: Integración Brevo webhook (no testeado)
-⚠️  PENDIENTE: Google Search Console validation
-
-────────────────────────────────────────────────────────────
-📦 COMMITS REALIZADOS
-────────────────────────────────────────────────────────────
-
-1️⃣  "Feat: GSAP hero animations & WhatsApp button"
-2️⃣  "Feat: New SEO page - casinos-menores-argentina.html"
-3️⃣  "Fix: Blog CTA buttons styling for mobile"
-4️⃣  "Feat: Brevo form validation (partial)"
-
-────────────────────────────────────────────────────────────
-⚙️  PRÓXIMAS ACCIONES (Para próxima sesión)
-────────────────────────────────────────────────────────────
-
-[ ] Completar integración Brevo API (webhook)
-[ ] Testear formulario contacto end-to-end
-[ ] Conectar Google Search Console + Analytics
-[ ] Mejorar animación parallax hero (más dramático)
-[ ] Review de canonicals en todas las páginas
-[ ] Implementar Open Graph tags (OG:image, etc)
-[ ] Crear Google Data Studio dashboard para GTM
-
-────────────────────────────────────────────────────────────
-📊 MÉTRICAS
-────────────────────────────────────────────────────────────
-
-Files modified: 4
-Files created: 1
-Lines added: ~280
-Lines removed: ~45
-Commits: 4
-⏱️  Time spent: 2h 30min
-🎯 Priority items closed: 2/3
-
-════════════════════════════════════════════════════════════
-```
-
-### Guardar automáticamente al cierre:
 ```bash
-TIMESTAMP=$(date +%Y-%m-%d)
-mv REPORT.txt REPORT-$TIMESTAMP.txt
-git add REPORT-$TIMESTAMP.txt
-git commit -m "Report: Daily build report for $TIMESTAMP"
+git log --oneline origin/main..HEAD   # si lista algo, falta pushear
 ```
 
 ---
 
-## 🎯 CHECKLIST PRE-PRODUCCIÓN
+## 📋 IDENTIDAD
 
-Antes de conectar Netlify, **TODAS** estas cosas deben estar ✅:
+**NOUFON** — sistema de fundas magnéticas con **forro Faraday** que bloquea
+toda señal (WiFi, Bluetooth, datos) mientras **el usuario conserva la posesión
+física de su dispositivo**. No confisca: bloquea.
 
-- [ ] **GTM**: Implementado en todos los HTML
-- [ ] **GA4**: Configurado en GTM + verificación
-- [ ] **Search Console**: Propiedad verificada
-- [ ] **Brevo**: Formulario conectado + webhook activo
-- [ ] **GSAP**: Todas las animaciones funcionando
-- [ ] **Responsive**: Testeado 320px, 480px, 768px, 1920px
-- [ ] **SEO**: Canonical URLs + Structured Data en todos
-- [ ] **Imágenes**: Todos los paths relativos funcionales
-- [ ] **Links internos**: Todos funcionan
-- [ ] **WhatsApp**: Botón flotante en todas las páginas
-- [ ] **404 page**: Funciona y brinda opciones
-- [ ] **Página Casinos**: Creada y linkeada desde home
-- [ ] **robots.txt**: Actualizado correctamente
-- [ ] **sitemap.xml**: Actualizado con todas las URLs
+- **Posicionamiento:** "Creamos espacios libres de celulares."
+- **Tesis transversal:** *No es un problema de disciplina ni de reglas. Es
+  estructural. NOUFON cambia la estructura del espacio para que la atención
+  vuelva sola.*
+- **Multi-vertical:** colegios, eventos, exámenes internacionales, teatros,
+  corporativo y embajadas. Educación es **una vertical más**, no la única.
+- **Cada vertical comunica CONSECUENCIAS POSITIVAS** del espacio sin celular,
+  nunca features del producto.
+- **Tono:** español rioplatense, "vos", directo, orientado a resultados
+  medibles. Nunca corporativo genérico.
 
----
-
-## 🚨 PRIORIDADES CRÍTICAS
-
-1. **Brevo Integration** (URGENTE): Sin esto no funciona lead gen
-2. **GSAP Animations** (URGENTE): Experiencia de usuario depende de esto
-3. **SEO Setup Completo** (IMPORTANTE): GTM + GA4 + Search Console
-4. **Responsive Testing** (IMPORTANTE): Mobile-first funcional
-5. **WhatsApp Button** (IMPORTANTE): Conversión a ventas
-
----
-
-## 📞 CONTACTO & REFERENCIAS
-
-**Propietario**: Giuliano Raschetti 
-**Socio**: Ignacio Gianetto
-**WhatsApp**: +5491164518851  
-**Email**: info@noufon.com  
-**Dominio**: https://noufon.com  
-**Repo GitHub**: giuliano1998/noufon-web
-
-**Recursos Útiles**:
-- GSAP Docs: https://gsap.com/
-- Schema.org: https://schema.org/
-- Google GTM Docs: https://support.google.com/tagmanager
-- Brevo API: https://developers.brevo.com/
+| | |
+|---|---|
+| Web | https://noufon.com |
+| Panel de contenido | https://noufon.com/admin |
+| Repo | `giuliano1998/noufon-website-2026` (rama `main`) |
+| Hosting | Netlify — proyecto `polite-faun-a9dba1` |
+| Carpeta local | `~/noufon-website-2026` |
+| Email | hola@noufonarg.com |
+| WhatsApp | +54 9 11 6451-8851 |
+| Socios | Giuliano Raschetti · Ignacio Gianetto |
 
 ---
 
-## 📌 VERSIÓN DEL DOCUMENTO
+## ⚙️ STACK
 
-- **Creado**: 2026-04-01
-- **Última actualización**: 2026-04-01
-- **Versión**: 1.0 (Producción)
-- **Estado**: ✅ Listo para usar
+- **Next.js 15** (App Router) con `output: 'export'` → **sitio 100% estático**
+- **React 19** · **TypeScript** · **GSAP 3** (ScrollTrigger)
+- **gray-matter** + **marked** (blog en markdown)
+- **Decap CMS 3.15.1** (versión fijada) como panel de contenido
+- **Netlify**: build `npm run build`, publica `out`
+- **Una sola función de servidor**: `netlify/functions/send-contact-email.js`
+- CSS propio en `app/globals.css`. **Sin Tailwind, sin preprocesadores.**
+
+**NO hay Brevo.** El formulario manda un email por SMTP. Si algún documento
+viejo menciona Brevo, está obsoleto.
 
 ---
 
-**⚠️ RECORDATORIO FINAL**: Este archivo debe ser **LEÍDO UNA SOLA VEZ** por sesión. No releer a menos que se haya modificado explícitamente. Memorizar los errores comunes y aplicarlos automaticamente.
+## 🗂️ ARQUITECTURA EN CAPAS
 
+```
+content/          ← CONTENIDO (editable desde /admin, sin tocar código)
+  home.json           portada: textos, stats, marquee, video
+  site.json           email, WhatsApp, redes
+  verticales/*.json   6 soluciones, una por archivo
+  blog/*.md           notas (frontmatter + markdown)
+
+lib/
+  types.ts          tipos compartidos — SIN acceso a disco (client-safe)
+  content.ts        loaders que leen /content en build (usa fs)
+  site.ts           config técnica + evento cta_vertical (client-safe)
+
+components/       15 componentes reutilizables
+app/              una carpeta por ruta
+public/
+  admin/            panel Decap (index.html + config.yml)
+  uploads/          imágenes subidas desde el panel
+  *.html            6 páginas SEO históricas
+```
+
+### 🔑 Regla de oro
+**El contenido no vive en el código.** Para cambiar un texto se edita
+`/content`, nunca un `.tsx`. Todo es data-driven: agregar un `.json` en
+`content/verticales/` crea la página y la suma **sola** al menú, al pie, al hub
+y al sitemap. Agregar un `.md` en `content/blog/` publica la nota.
+
+### Rutas (20 páginas estáticas)
+`/` · `/espacios-libres-de-celulares/` · `/colegios/` `/eventos/`
+`/examenes-internacionales/` `/teatros/` `/corporativo/` `/embajadas/` ·
+`/blog/` · `/blog/<slug>/` · `/contacto/` (acepta `?vertical=` y `?piloto=1`) ·
+`/leyes-celulares-argentina/` · `/admin/`
+
+### Páginas históricas — NO TOCAR A LA LIGERA
+Seis páginas viven como HTML estático en `public/` porque ya posicionan en
+Google: `ley-15534-celulares-escuela`, `como-implementar-politica-de-celulares-en-escuela`,
+`alternativa-confiscacion-celulares`, `noufon-mario-pergolini`,
+`noufon-vs-yondr`, `politica-de-privacidad`.
+Se enlazan **con `.html` al final**. Además hay un **301 de
+`/fundas-para-colegios` → `/colegios/`** en `public/_redirects`. No romperlo.
+
+---
+
+## 🎨 DISEÑO (reglas no negociables)
+
+### Paleta
+```css
+--teal: #2DD4BF;      /* acento de marca, con moderación */
+--dark: #0F2D3D;      /* fondos profundos */
+--white: #FFFFFF;
+--text: #1a1a1a;
+--gray: #f5f5f5;
+--gray-mid: #e0e0e0;
+/* teals profundos admitidos: #1A9083 · #22B5A3 */
+```
+Tipografía **Montserrat** vía `next/font`.
+
+### PROHIBIDO (delata que lo hizo una IA)
+- ❌ **Emojis en la interfaz.** Se usan los íconos SVG de línea de
+  `components/Icons.tsx` (22 íconos, trazo 1.75, mismo tamaño). Cero excepciones.
+  *(En documentación como este archivo sí se pueden usar.)*
+- ❌ **Sopa de cards**: grillas de 3-4 cards idénticas con sombra y borde
+  redondeado como recurso por defecto. Si hay cards, que tengan jerarquía real
+  (bento asimétrico, tamaños distintos, patrón editorial).
+- ❌ Gradientes morado/azul genéricos, glassmorphism gratuito, sombras exageradas.
+- ❌ Secciones todas con el mismo ritmo. Alternar full-bleed, split 50/50,
+  editorial a una columna, showcase.
+
+### OBLIGATORIO
+- Whitespace generoso, `max-width` de contenido ~1200px.
+- Jerarquía tipográfica fuerte: titulares display grandes, mucho aire.
+- Fondos: mesh teal→dark sutil + textura de grano sobre los fondos oscuros.
+- GSAP + ScrollTrigger para reveals, siempre respetando `prefers-reduced-motion`.
+- Imágenes con tratamiento consistente y overlay `--dark` para legibilidad.
+
+**Referencias de calidad:** apple.com, linear.app, stripe.com, vercel.com.
+**Test del olfato:** si una sección parece plantilla de IA, rehacela.
+
+---
+
+## 🔐 SEGURIDAD (leer antes de tocar la función de contacto)
+
+Auditoría completa el 2026-08-24 → ver `SEGURIDAD.md`.
+
+### Reglas absolutas
+1. **NUNCA escribir una credencial en un archivo del proyecto.** Van en
+   Netlify → *Environment variables*. Un secreto que entra al historial de Git
+   queda ahí para siempre.
+2. **No desarmar las protecciones** de `send-contact-email.js`: límite por IP,
+   campo trampa anti-bots, verificación de origen, escapado de HTML,
+   validación estricta, errores genéricos.
+3. **Nunca loguear credenciales ni datos personales** en las funciones.
+4. **Nunca devolver stack traces al cliente.**
+
+### Por qué importa
+El endpoint tenía una vulnerabilidad **crítica**: se podía usar como **relay de
+spam**, lo que llevaría la casilla a listas negras y haría que **dejen de
+llegar los leads reales**. Ya está corregido. No reintroducirlo.
+
+### Variables de entorno (nombres, nunca valores)
+`SMTP_HOST` · `SMTP_PORT` · `SMTP_USER` · `SMTP_PASSWORD` · `SMTP_FROM` ·
+`CONTACT_EMAIL_TO`
+
+### IDs públicos (viajan al navegador por diseño, no son secretos)
+GTM `GTM-PHK2V9FW` · GA4 `G-F8M4H4579R` · Meta Pixel `1958970012160530`
+
+---
+
+## 🐛 TRAMPAS CONOCIDAS (memorizar — ya nos costaron tiempo)
+
+### ❌ 1. El script de Decap va al FINAL DEL BODY, nunca en el head
+En el head se ejecuta antes de que exista el body, Decap no encuentra dónde
+montarse y **la página queda en blanco sin ningún error en consola**.
+Síntoma: `window.CMS` es `undefined` y no existe el nodo `#nc-root`.
+
+### ❌ 2. Los componentes `'use client'` NO pueden importar `lib/content.ts`
+Usa `fs`. Deben recibir los datos **por props** desde un componente de
+servidor. Así funcionan `Header` (recibe las verticales desde `layout.tsx`) y
+`ContactForm` (recibe las etiquetas desde `app/contacto/page.tsx`).
+Para tipos, importar de `lib/types.ts`, que es client-safe.
+
+### ❌ 3. `public/admin/config.yml` debe declarar TODOS los campos
+Un campo no declarado **se borra al guardar** desde el panel. Al agregar un
+campo a un JSON de `/content`, agregarlo también al config.
+
+### ❌ 4. El frontmatter YAML necesita comillas escapadas
+Una bajada con `"` adentro rompe el build entero. Escribir `\"`.
+
+### ❌ 5. En `npm run dev` el panel está en `/admin/index.html`
+Next dev no sirve el `index.html` de subcarpetas de `public/` en `/admin/`.
+En producción `/admin` funciona normal. Lo mismo aplica a las páginas
+históricas: en dev hay que enlazarlas con `.html`.
+
+### ❌ 6. La galería de las verticales es `[{src: "..."}]`
+Objetos, no strings, porque lo requiere el widget `list` de Decap.
+`lib/content.ts` la aplana a strings para el sitio.
+
+### ❌ 7. No correr `git push` en la ventana donde corre `npm run dev`
+Esa terminal está ocupada por el servidor. Abrir una pestaña nueva.
+
+---
+
+## 🔄 WORKFLOW
+
+```bash
+cd ~/noufon-website-2026
+npm install          # solo la primera vez
+npm run dev          # http://localhost:3000
+npm run build        # SIEMPRE verificar que compile antes de commitear
+git push origin main # lo corre Giuliano → dispara el deploy
+```
+
+```
+Editar → npm run build → commit → push → Netlify buildea → live (1-3 min)
+```
+
+### Al cerrar la sesión
+1. `npm run build` en verde.
+2. Verificar que no se rompió ninguna ruta existente.
+3. Commit con mensaje descriptivo.
+4. `./generate-report.sh` + completar el reporte + commitear.
+5. Recordarle a Giuliano que haga el push.
+
+### Si algo sale mal en producción
+Netlify → *Deploys* → último deploy que funcionaba → *Publish deploy*.
+
+---
+
+## ✅ CHECKLIST ANTES DE DAR ALGO POR TERMINADO
+
+- [ ] `npm run build` pasa sin errores ni warnings de tipos
+- [ ] Ninguna ruta existente se rompió (incluidas las 6 históricas `.html`)
+- [ ] El 301 de `/fundas-para-colegios` sigue vivo
+- [ ] GTM + GA4 + Meta Pixel intactos
+- [ ] Cero emojis en la interfaz
+- [ ] Responsive verificado en 320px, 480px, 768px y 1920px
+- [ ] Canonical y sitemap correctos
+- [ ] Imágenes optimizadas (<300 KB, máx. 1920px de ancho)
+- [ ] Ninguna credencial en el código
+- [ ] Reporte del día generado y commiteado
+
+---
+
+## 📚 DOCUMENTACIÓN DEL PROYECTO
+
+| Archivo | Para qué |
+|---|---|
+| `CONTEXTO.md` | Estado general del proyecto. **Empezar por acá.** |
+| `SEGURIDAD.md` | Auditoría, vulnerabilidades corregidas, pendientes de Giuliano. |
+| `PANEL-ADMIN.md` | Guía de uso del panel `/admin`. |
+| `CLAUDE.md` | Este archivo: cómo trabajar en el proyecto. |
+| `REPORT-*.txt` | Reporte de cada sesión. |
+
+---
+
+## 📌 VERSIÓN
+
+- **Reescrito:** 2026-08-24 · **Versión:** 2.0
+- **Reemplaza:** la v1.0 (sitio HTML vanilla, Brevo, estructura anterior)

@@ -239,14 +239,18 @@ Auditoría completa el 2026-08-24. Ver **`SEGURIDAD.md`** para el detalle.
 | Archivo | Para qué sirve |
 |---|---|
 | `CONTEXTO.md` | Este documento. Estado general del proyecto. |
+| `CLAUDE.md` | Cómo trabajar en el proyecto: reglas, diseño, seguridad, trampas. |
 | `SEGURIDAD.md` | Auditoría, vulnerabilidades corregidas, qué depende de Giuliano. |
 | `PANEL-ADMIN.md` | Guía de uso del panel `/admin`, paso a paso. |
+| `README.md` | Arranque rápido del repositorio. |
+| `generate-report.sh` | Genera la plantilla del reporte de cada sesión. |
 | `REPORT-*.txt` | Reportes de cada sesión de desarrollo. |
 
-> ⚠️ **`CLAUDE.md` está DESACTUALIZADO.** Describe el sitio anterior (HTML
-> vanilla, Brevo, rutas y estructura viejas, emojis como íconos). Sus reglas de
-> proceso siguen valiendo, pero **su información técnica ya no aplica**: para
-> eso mandan este documento y el código. Conviene reescribirlo.
+> **Limpieza del 2026-08-24:** se reescribieron `CLAUDE.md` y `README.md`, y se
+> eliminaron `ARCHITECTURE.md`, `README_DOCUMENTATION.md` y `00_START_HERE.txt`,
+> que describían el sitio anterior (HTML vanilla, integración con Brevo que
+> nunca existió, rutas viejas) y generaban contexto contradictorio. Siguen
+> disponibles en el historial de Git si hiciera falta consultarlos.
 
 ---
 
