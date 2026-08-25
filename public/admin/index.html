@@ -8,7 +8,8 @@
     <meta name="robots" content="noindex, nofollow" />
 
     <title>NOUFON — Panel de contenido</title>
-
+  </head>
+  <body>
     <!--
       NOTA DE SEGURIDAD
       ─────────────────
@@ -20,8 +21,12 @@
       La versión de Decap CMS está FIJADA (no se usa "latest") para que una
       actualización externa no pueda cambiar el código que corre acá sin que
       nosotros lo revisemos primero.
+
+      IMPORTANTE: la etiqueta script tiene que ir al FINAL DEL CUERPO de la
+      página, nunca en la cabecera. Decap se dibuja dentro del cuerpo al
+      ejecutarse; si corre antes de que el cuerpo exista, la página queda en
+      blanco y NO muestra ningún error (así se rompió la primera versión).
     -->
     <script src="https://unpkg.com/decap-cms@3.15.1/dist/decap-cms.js"></script>
-  </head>
-  <body></body>
+  </body>
 </html>
